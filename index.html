@@ -1,71 +1,322 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tahir</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="TahirEdits — Abu Tahir MD Mostakim. Video editing, motion graphics, storytelling and AI content creation.">
+<title>TahirEdits — Abu Tahir MD Mostakim</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#060713;--ink:#f8f8ff;--muted:#9fa5bd;--line:rgba(255,255,255,.12);
+  --blue:#6486ff;--blue2:#9ab0ff;--maroon:#7e1747;--maroon2:#b3275d;
+  --mx:50%;--my:50%;--max:1440px
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"DM Sans",sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:-20%;z-index:-5;background:
+radial-gradient(circle at 18% 28%,rgba(44,80,255,.32),transparent 30%),
+radial-gradient(circle at 83% 26%,rgba(128,18,70,.28),transparent 30%),
+linear-gradient(115deg,#050713,#0e0b1d 52%,#180812);animation:bgDrift 15s ease-in-out infinite alternate}
+body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:40;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E")}
+@keyframes bgDrift{to{transform:scale(1.05) translate3d(1.5%,-1%,0);filter:hue-rotate(5deg)}}
+.cursor-glow{position:fixed;left:var(--mx);top:var(--my);width:320px;height:320px;transform:translate(-50%,-50%);pointer-events:none;z-index:35;background:radial-gradient(circle,rgba(96,128,255,.13),transparent 67%);mix-blend-mode:screen;transition:opacity .3s}
+.orb{position:fixed;width:360px;height:360px;border-radius:50%;filter:blur(100px);opacity:.14;z-index:-2;pointer-events:none}
+.orb.one{background:#3c63ff;left:-190px;top:38%;animation:floatA 13s ease-in-out infinite alternate}
+.orb.two{background:#a41754;right:-200px;top:54%;animation:floatB 17s ease-in-out infinite alternate}
+@keyframes floatA{to{transform:translate(220px,-100px)}}@keyframes floatB{to{transform:translate(-200px,90px)}}
+
+a{text-decoration:none;color:inherit}
+button{font:inherit}
+.container{width:min(var(--max),calc(100% - 9vw));margin:auto}
+header{height:92px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+.brand{font:700 24px/1 "Space Grotesk";letter-spacing:-1.4px}
+.brand span{color:var(--blue2);margin-left:5px}
+.navlinks{display:flex;gap:42px;font-size:14px;color:#e6e7f1}
+.navlinks a,.cta,.skill,.reel-card,.project-card,.service-row{position:relative;overflow:hidden}
+.navlinks a:after,.cta:after,.skill:after,.reel-card:after,.project-card:after,.service-row:after{
+ content:"";position:absolute;inset:-50%;pointer-events:none;opacity:0;transition:opacity .35s;
+ background:radial-gradient(circle at var(--x,50%) var(--y,50%),rgba(133,157,255,.28),transparent 38%),
+ radial-gradient(circle at calc(var(--x,50%) + 13%) calc(var(--y,50%) + 8%),rgba(137,20,76,.25),transparent 36%);
+ filter:blur(20px)
+}
+.navlinks a:hover:after,.cta:hover:after,.skill:hover:after,.reel-card:hover:after,.project-card:hover:after,.service-row:hover:after{opacity:1}
+.navlinks a:hover{color:#fff;text-shadow:0 0 18px rgba(148,169,255,.65),0 0 34px rgba(155,30,80,.35)}
+.cta{border:1px solid rgba(255,255,255,.2);padding:14px 19px;border-radius:999px;font-size:13px;display:flex;align-items:center;gap:17px;transition:transform .25s,box-shadow .25s}
+.cta:hover{transform:translateY(-3px);box-shadow:0 0 35px rgba(95,126,255,.16)}
+.cta b{font-size:18px;font-weight:400}
+.menu{display:none;background:none;border:0;color:#fff;font-size:23px}
+
+.hero{min-height:820px;padding:48px 0 72px;border-bottom:1px solid var(--line);position:relative}
+.kicker{display:flex;gap:11px;align-items:center;font-size:10px;letter-spacing:2.5px;font-weight:700;color:#dce0ed}
+.kicker i{width:7px;height:7px;background:var(--blue2);border-radius:50%;box-shadow:0 0 18px rgba(125,158,255,.8)}
+.hero h1{margin:76px 0 44px;font:700 clamp(84px,15vw,228px)/.72 "Space Grotesk";letter-spacing:-.105em;white-space:nowrap}
+.gradient-text{background:linear-gradient(100deg,#fff 0 32%,#b4c6ff 46%,#5577ff 66%,#9c2358 93%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-dot{color:#a5245a}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:80px;align-items:end}
+.hero h2{font:400 clamp(39px,4.4vw,68px)/1.02 "Space Grotesk";letter-spacing:-3.4px;margin:0}
+.hero h2 em,.section-title em{font-family:"Instrument Serif",serif;font-style:italic;color:var(--blue2)}
+.meta{font-size:10px;letter-spacing:2.2px;font-weight:700;color:#8e95ab;margin-bottom:17px}
+.hero-copy p{max-width:510px;color:var(--muted);line-height:1.75;margin:25px 0 0}
+.hero-side{display:grid;gap:18px;justify-items:end}
+.hero-stack{font:700 58px/.89 "Space Grotesk";letter-spacing:-3px;color:rgba(255,255,255,.16);text-align:right}
+.hero-stack span{color:rgba(170,33,90,.42)}
+.hero-punch{font-size:20px;font-weight:600;line-height:1.35;text-align:right}
+.scroll-line{position:absolute;right:0;bottom:19px;color:#787f96;font:10px "DM Mono";letter-spacing:1.5px}
+
+.reel-section{background:#f0eddf;color:#111;position:relative;overflow:hidden;padding:80px 0 90px}
+.reel-head{width:min(var(--max),calc(100% - 9vw));margin:0 auto 30px;display:flex;justify-content:space-between;align-items:end}
+.reel-head .small{font:700 10px "DM Mono";letter-spacing:2px;color:#555}
+.reel-head h2{margin:10px 0 0;font:500 clamp(44px,5vw,76px)/.96 "Space Grotesk";letter-spacing:-3.5px}
+.reel-head p{max-width:340px;line-height:1.55;color:#64615a;text-align:right}
+.marquee-window{overflow:hidden}
+.marquee{display:flex;gap:28px;width:max-content;animation:marquee 32s linear infinite}
+.marquee:hover{animation-play-state:paused}
+@keyframes marquee{to{transform:translateX(calc(-50% - 14px))}}
+.reel-card{width:260px;height:465px;flex:0 0 260px;border-radius:20px;border:1px solid rgba(16,18,28,.12);background:#d5d1c5;transform-style:preserve-3d;box-shadow:0 16px 30px rgba(0,0,0,.13)}
+.reel-card .poster{position:absolute;inset:0;background-size:cover;background-position:center;filter:saturate(.84) contrast(.95)}
+.reel-card:before{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(8,9,15,.88),rgba(8,9,15,.06) 55%,rgba(8,9,15,.05));z-index:1}
+.reel-card .top,.reel-card .bottom{position:absolute;left:20px;right:20px;z-index:3;display:flex;justify-content:space-between;align-items:center}
+.reel-card .top{top:19px;font:700 9px "DM Mono";letter-spacing:1.8px;color:#fff}
+.reel-card .bottom{bottom:19px;color:#fff}
+.reel-card .bottom strong{font:600 18px "Space Grotesk"}
+.reel-card .play{width:42px;height:42px;border:1px solid rgba(255,255,255,.45);border-radius:50%;display:grid;place-items:center}
+.reel-card .play:after{content:"";width:0;height:0;border-left:8px solid #fff;border-top:5px solid transparent;border-bottom:5px solid transparent;margin-left:2px}
+.poster.one{background-image:url("https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=700&q=85")}
+.poster.two{background-image:url("https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=700&q=85")}
+.poster.three{background-image:url("https://images.unsplash.com/photo-1598387993281-cecf8b71a8f8?auto=format&fit=crop&w=700&q=85")}
+.poster.four{background-image:url("https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=700&q=85")}
+.poster.five{background-image:url("https://images.unsplash.com/photo-1525182008055-f88b95ff7980?auto=format&fit=crop&w=700&q=85")}
+.poster.six{background-image:url("https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=700&q=85")}
+.reel-note{width:min(var(--max),calc(100% - 9vw));margin:26px auto 0;color:#77746c;font:10px "DM Mono";letter-spacing:1px}
+
+.toolkit{padding:40px 0;border-bottom:1px solid var(--line)}
+.tool-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.tool{padding:21px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.025);display:flex;align-items:center;gap:14px;transition:.35s}
+.tool:hover{transform:translateY(-5px);border-color:rgba(145,169,255,.55);box-shadow:0 16px 55px rgba(43,63,153,.14)}
+.tool-icon{width:45px;height:45px;border-radius:11px;display:grid;place-items:center;font:700 18px "Space Grotesk";background:#172456;color:#a9bbff}
+.tool:nth-child(2) .tool-icon{background:#ececf0;color:#24283a}.tool:nth-child(3) .tool-icon{background:#30184f;color:#cdb8ff}.tool:nth-child(4) .tool-icon{background:#5b1839;color:#ffd0df}
+.tool b,.tool small{display:block}.tool b{font-size:13px}.tool small{color:#8f95a8;font-size:10px;margin-top:4px}
+
+.work{padding:112px 0 80px;border-bottom:1px solid var(--line)}
+.section-top{display:flex;justify-content:space-between;gap:50px;align-items:end}
+.eyebrow2{font:700 10px "DM Mono";letter-spacing:2px;color:#7f869c}
+.section-title{font:400 clamp(48px,5.6vw,80px)/.96 "Space Grotesk";letter-spacing:-4px;margin:23px 0 0}
+.section-top p{color:#a1a6b9;line-height:1.7;max-width:320px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin:35px 0}
+.pill{padding:11px 15px;border:1px solid var(--line);border-radius:999px;background:none;color:#9298ad;cursor:pointer;transition:.25s}.pill:hover,.pill.active{background:#fff;color:#111;border-color:#fff}
+.project-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.project-card{min-height:410px;border:1px solid rgba(255,255,255,.14);border-radius:11px;background:linear-gradient(135deg,#0d1740,#171024 62%,#541334);padding:26px;transition:transform .38s,box-shadow .38s,border-color .38s;isolation:isolate}
+.project-card:hover{transform:translateY(-8px);border-color:rgba(145,169,255,.6);box-shadow:0 30px 70px rgba(0,0,0,.25)}
+.project-card.wide{grid-column:1/-1;min-height:390px}
+.project-card .tag{position:relative;z-index:3;font:700 9px "DM Mono";letter-spacing:2px}.project-card .project-copy{position:absolute;left:6%;bottom:8%;font:700 56px/.88 "Space Grotesk";letter-spacing:-4px;z-index:2}.project-card .arrow{position:absolute;right:22px;bottom:22px;width:43px;height:43px;border:1px solid rgba(255,255,255,.45);border-radius:50%;display:grid;place-items:center;z-index:3;transition:.3s}.project-card:hover .arrow{transform:rotate(45deg);background:#fff;color:#111}
+.project-card.real{background:linear-gradient(125deg,#b3b3a9,#1c251f 45%,#11141b)}.project-card.short{background:radial-gradient(circle at 75% 35%,#5d3269,transparent 31%),linear-gradient(120deg,#0b1540,#302653 65%,#5b173f)}.project-card.pod{background:radial-gradient(circle at 55% 48%,#666b6a 0,#161916 27%,#020303 65%)}.project-card.motion{background:linear-gradient(130deg,#15317f,#342047)}.project-card.ai{background:linear-gradient(110deg,#0f286c,#171a46 52%,#6a143e)}
+.project-card .mini-shape{position:absolute;right:13%;top:23%;width:160px;height:160px;border:34px solid #7692ff;border-radius:50%;box-shadow:18px 14px 0 #8c1d4d;animation:spin 10s linear infinite}.project-card.ai .mini-shape{border:0;border-radius:50%;width:205px;height:205px;background:radial-gradient(circle at 32% 27%,#e3eaff,#577ff0 30%,#1c2f74 62%,#771642 85%);box-shadow:0 30px 80px rgba(76,117,242,.3);animation:orbMove 5s ease-in-out infinite}
+@keyframes spin{to{transform:rotate(360deg)}}@keyframes orbMove{50%{transform:translateY(-13px) scale(1.04)}}
+.project-grid.hidden .project-card{display:none}
+
+.skills{padding:110px 0;border-bottom:1px solid var(--line)}
+.skill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:50px}
+.skill{padding:30px;border:1px solid var(--line);background:rgba(255,255,255,.022);border-radius:12px;transition:.35s}
+.skill:hover{transform:translateY(-7px) rotate(.15deg);box-shadow:0 20px 50px rgba(61,85,201,.12);text-shadow:0 0 24px rgba(135,162,255,.3)}
+.skill span{font:700 10px "DM Mono";letter-spacing:2px;color:#767d94}.skill h3{font:500 25px "Space Grotesk";margin:17px 0 10px}.skill p{color:#9399ac;font-size:13px;line-height:1.65;margin:0}
+
+.about{padding:115px 0;border-bottom:1px solid var(--line)}
+.about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:90px}.about-name{font:500 18px "Space Grotesk";margin-top:42px}.about-name small{display:block;color:#777d92;font:9px "DM Mono";letter-spacing:2px;margin-top:8px}.about-copy h3{font:500 30px/1.25 "Space Grotesk";margin:0 0 28px}.about-copy p{color:#a5a9bb;line-height:1.8;max-width:680px}.stat-row{display:grid;grid-template-columns:1fr 1fr;gap:15px;border-top:1px solid var(--line);margin-top:30px;padding-top:25px}.stat b{display:block;font:500 23px "Space Grotesk"}.stat small{color:#777d91;font-size:10px;margin-top:5px;display:block}
+
+.services{padding:110px 0;border-bottom:1px solid var(--line)}
+.service-list{margin-top:52px}.service-row{display:grid;grid-template-columns:70px 1fr 1.2fr 40px;gap:20px;align-items:center;padding:29px 0;border-top:1px solid var(--line);transition:.3s}.service-row:last-child{border-bottom:1px solid var(--line)}.service-row:hover{padding-left:14px;background:linear-gradient(90deg,rgba(68,96,232,.1),transparent)}.service-row .num{font:10px "DM Mono";color:#747b91}.service-row h3{font:500 24px "Space Grotesk";margin:0}.service-row p{color:#949aac;font-size:13px;line-height:1.65;margin:0}.service-row b{font-size:19px;font-weight:400}
+
+.final{padding:145px 0 155px;text-align:center}.final h2{font:400 clamp(58px,8vw,118px)/.92 "Space Grotesk";letter-spacing:-6px;margin:28px auto;max-width:1000px}.final p{max-width:520px;margin:0 auto;color:#9ca1b4;line-height:1.7}
+.final .cta{display:inline-flex;margin-top:34px;border-color:rgba(145,169,255,.35);background:linear-gradient(100deg,#2b55d9,#6f1846);padding:17px 22px}
+
+footer{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding:30px 0 45px;color:#777d90;font:10px "DM Mono";letter-spacing:.7px}
+
+.glow{transition:text-shadow .28s,color .28s,filter .28s}.glow:hover{color:#fff;text-shadow:0 0 8px rgba(255,255,255,.68),0 0 25px rgba(95,131,255,.55),0 0 45px rgba(147,23,77,.35);filter:blur(.15px)}
+@media(max-width:900px){
+ header{height:78px}.navlinks,.header-cta{display:none}.menu{display:block}
+ .hero{min-height:auto}.hero h1{font-size:21.5vw;margin:60px 0 55px}.hero-grid{grid-template-columns:1fr;gap:48px}.hero-side{justify-items:start}.hero-stack,.hero-punch{text-align:left}
+ .tool-grid{grid-template-columns:1fr 1fr}.project-grid{grid-template-columns:1fr}.project-card.wide{grid-column:auto}.skill-grid{grid-template-columns:1fr 1fr}
+ .about-grid{grid-template-columns:1fr;gap:55px}.service-row{grid-template-columns:48px 1fr 30px}.service-row p{grid-column:2}.service-row b{grid-column:3;grid-row:1}
+ .reel-card{width:235px;flex-basis:235px;height:430px}
+}
+@media(max-width:560px){
+ .container,.reel-head,.reel-note{width:calc(100% - 36px)}
+ .hero h1{font-size:22vw;letter-spacing:-.12em}.hero h2{letter-spacing:-2px}.tool-grid,.skill-grid{grid-template-columns:1fr}
+ .section-top{display:block}.section-top p{margin-top:25px}.project-card{min-height:330px}.project-card .project-copy{font-size:43px}.project-card.wide{min-height:330px}
+ .reel-section{padding:60px 0 70px}.reel-head{display:block}.reel-head p{text-align:left;margin-top:20px}.marquee{gap:16px}.reel-card{width:215px;flex-basis:215px;height:390px}
+ footer{gap:16px;flex-direction:column}
+ .final{padding:100px 0 120px}.final h2{letter-spacing:-4px}
+}
+</style>
 </head>
-
 <body>
-    <section class="top-banner flexible-container">
-        <div class="half-width">
-            <h1>Welcome To</h1>
-            <h1><span class="orange">Tahir MD.Mostakim's</span> World!</h1>
-            <h3>Build Climber and Train Stopper</h3>
+<div class="cursor-glow"></div><div class="orb one"></div><div class="orb two"></div>
 
-            <p>You might saw me jumping, climbing buildings, and stopping trains. But nobody pays me a dime for that
-                work. That's why I am learning and mastering web development. I will not stop until I become the Web
-                Development Hero.</p>
-            <a class="link-button" target="_blank" href="https://www.facebook.com/md.mostakim.18847">Hire me</a>
-        </div>
-        <div class="half-width">
-            <img src="images/tahir.png" alt="">
-        </div>
-    </section>
-    <section class="dream flexible-container">
-        <div class="half-width">
-            <img src="images/jhankar2.png" alt="">
+<header class="container">
+  <a href="#home" class="brand glow">TahirEdits<span>✦</span></a>
+  <nav class="navlinks">
+    <a href="#work" class="glow">Work</a><a href="#about" class="glow">About</a><a href="#services" class="glow">Services</a>
+  </nav>
+  <a href="#contact" class="cta header-cta glow">Let's talk <b>↗</b></a>
+  <button class="menu" aria-label="Menu">☰</button>
+</header>
 
-        </div>
-        <div class="half-width">
-            <h1>Dream Big</h1>
-            <h2>Become a web developer</h2>
-            <p>I already learned the basic HTML and CSS. I can build any simple website. I can even teach my grandma how
-                to make simple website. My goal is to build 3 websites and learn advanced topics.</p>
+<main>
+<section id="home" class="hero container">
+  <div class="kicker"><i></i> VIDEO EDITOR · MOTION DESIGN · AI CREATOR</div>
+  <h1><span>TAHIR</span><span class="gradient-text">EDITS</span><span class="hero-dot">.</span></h1>
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <div class="meta">ABU TAHIR MD MOSTAKIM</div>
+      <h2>I shape footage.<br>You tell a <em>better story.</em></h2>
+      <p>Thoughtful editing, expressive motion and AI-powered visuals — built for the way people watch, remember and share.</p>
+      <a href="#work" class="cta" style="display:inline-flex;margin-top:26px;background:linear-gradient(100deg,#2b55d9,#751746);border-color:transparent">Explore my work <b>↗</b></a>
+    </div>
+    <div class="hero-side">
+      <div class="hero-stack">CREATE.<br><span>FEEL.</span><br>REMEMBER.</div>
+      <div class="hero-punch">From the first hook<br>to the final frame.</div>
+    </div>
+  </div>
+  <div class="scroll-line">SCROLL TO EXPLORE ↓</div>
+</section>
 
-            <a class="link-button" target="_blank" href="">DOWNLOAD RESUME</a>
-        </div>
+<section class="reel-section" id="reels">
+  <div class="reel-head">
+    <div><div class="small">SELECTED REELS / 01</div><h2>Work that moves.</h2></div>
+    <p>A scrolling showcase built to catch attention fast — especially on the work you want clients to see first.</p>
+  </div>
+  <div class="marquee-window">
+    <div class="marquee" id="reelTrack">
+      <article class="reel-card" data-tilt><div class="poster one"></div><div class="top"><span>REAL ESTATE</span><span>01</span></div><div class="bottom"><strong>Spaces that sell.</strong><span class="play"></span></div></article>
+      <article class="reel-card" data-tilt><div class="poster two"></div><div class="top"><span>TALKING HEAD</span><span>02</span></div><div class="bottom"><strong>Make them listen.</strong><span class="play"></span></div></article>
+      <article class="reel-card" data-tilt><div class="poster three"></div><div class="top"><span>MOTION GRAPHICS</span><span>03</span></div><div class="bottom"><strong>Ideas in motion.</strong><span class="play"></span></div></article>
+      <article class="reel-card" data-tilt><div class="poster four"></div><div class="top"><span>STORYTELLING</span><span>04</span></div><div class="bottom"><strong>Shape the feeling.</strong><span class="play"></span></div></article>
+      <article class="reel-card" data-tilt><div class="poster five"></div><div class="top"><span>PODCASTS</span><span>05</span></div><div class="bottom"><strong>Conversations that stay.</strong><span class="play"></span></div></article>
+      <article class="reel-card" data-tilt><div class="poster six"></div><div class="top"><span>AI CONTENT</span><span>06</span></div><div class="bottom"><strong>Imagine. Create.</strong><span class="play"></span></div></article>
+      <article class="reel-card" data-tilt><div class="poster one"></div><div class="top"><span>REAL ESTATE</span><span>07</span></div><div class="bottom"><strong>Spaces that sell.</strong><span class="play"></span></div></article>
+      <article class="reel-card" data-tilt><div class="poster two"></div><div class="top"><span>TALKING HEAD</span><span>08</span></div><div class="bottom"><strong>Make them listen.</strong><span class="play"></span></div></article>
+      <article class="reel-card" data-tilt><div class="poster three"></div><div class="top"><span>MOTION GRAPHICS</span><span>09</span></div><div class="bottom"><strong>Ideas in motion.</strong><span class="play"></span></div></article>
+      <article class="reel-card" data-tilt><div class="poster four"></div><div class="top"><span>STORYTELLING</span><span>10</span></div><div class="bottom"><strong>Shape the feeling.</strong><span class="play"></span></div></article>
+      <article class="reel-card" data-tilt><div class="poster five"></div><div class="top"><span>PODCASTS</span><span>11</span></div><div class="bottom"><strong>Conversations that stay.</strong><span class="play"></span></div></article>
+      <article class="reel-card" data-tilt><div class="poster six"></div><div class="top"><span>AI CONTENT</span><span>12</span></div><div class="bottom"><strong>Imagine. Create.</strong><span class="play"></span></div></article>
+    </div>
+  </div>
+  <div class="reel-note">SAMPLE REEL CARDS — REPLACE THESE POSTERS WITH YOUR ACTUAL EDITS / MP4 LINKS.</div>
+</section>
 
-    </section>
-    <section class="experience-area">
-        <h1>Experiences</h1>
-        <div class="flexible-container">
-            <div id="full-stack-developer" class="expreience-item">
-                <h2>Full Stack Web Developer</h2>
-                <h3 class="orange">2021-Present | Pro Level Developer</h3>
-                <p>I am the master of HTML, CSS and Javascript. I know everything needed to make a website function,
-                    efficient. I didn't stop with the web. I went beyond with most popular Javascript framework called
-                    Vue JS. I even know the deployment, server and security. I will give you 100% web solution.</p>
+<section class="toolkit container">
+  <div class="tool-grid">
+    <div class="tool"><div class="tool-icon">Pr</div><div><b>Premiere Pro</b><small>Story & precision</small></div></div>
+    <div class="tool"><div class="tool-icon">CX</div><div><b>CapCut</b><small>Social & short form</small></div></div>
+    <div class="tool"><div class="tool-icon">Ae</div><div><b>After Effects</b><small>Motion & compositing</small></div></div>
+    <div class="tool"><div class="tool-icon">✦</div><div><b>AI creation</b><small>Ideas into visuals</small></div></div>
+  </div>
+</section>
 
-            </div>
-            <div id="baby-stack-developer" class="expreience-item">
-                <h2>Baby Web Developer</h2>
-                <h3 class="orange">2020-2021 | Programming Hero Learner</h3>
-                <p>They didn't offer me a job. But I made myself as a remove web developer. I made their website and
-                    showed it to them. They liked it. And uploaded the content. It was fun working at Programming Hero.
-                </p>
-            </div>
-        </div>
-    </section>
+<section id="work" class="work container">
+  <div class="section-top">
+    <div><div class="eyebrow2">01 / THE WORK</div><h2 class="section-title">A cut <em>above.</em></h2></div>
+    <p>Different formats. The same obsession with getting every detail right.</p>
+  </div>
+  <div class="pills">
+    <button class="pill active" data-filter="all">All work</button><button class="pill" data-filter="real">Real estate</button><button class="pill" data-filter="short">Short form</button><button class="pill" data-filter="pod">Podcasts</button><button class="pill" data-filter="motion">Motion</button><button class="pill" data-filter="ai">AI content</button>
+  </div>
+  <div class="project-grid" id="projectGrid">
+    <article class="project-card real" data-cat="real"><div class="tag">REAL ESTATE</div><div class="project-copy glow">Spaces<br>that tell<br>a story.</div><div class="arrow">↗</div></article>
+    <article class="project-card short" data-cat="short"><div class="tag">SHORT FORM</div><div class="project-copy glow">MAKE<br>THEM<br><em>LOOK.</em></div><div class="arrow">↗</div></article>
+    <article class="project-card pod" data-cat="pod"><div class="tag">PODCASTS</div><div class="project-copy glow">Conversations<br>that stay.</div><div class="arrow">↗</div></article>
+    <article class="project-card motion" data-cat="motion"><div class="tag">MOTION DESIGN</div><div class="mini-shape"></div><div class="project-copy glow">Ideas.<br><em>In motion.</em></div><div class="arrow">↗</div></article>
+    <article class="project-card ai wide" data-cat="ai"><div class="tag">AI CONTENT CREATION</div><div class="mini-shape"></div><div class="project-copy glow">Imagine it.<br><em>Create it.</em></div><div class="arrow">↗</div></article>
+  </div>
+</section>
+
+<section class="skills container">
+  <div class="section-top">
+    <div><div class="eyebrow2">02 / WHAT I DO</div><h2 class="section-title">Skills that <em>sell the story.</em></h2></div>
+    <p>Editing is more than software. It is knowing what to keep, what to cut, and what the viewer should feel next.</p>
+  </div>
+  <div class="skill-grid">
+    <div class="skill glow"><span>01</span><h3>Storytelling</h3><p>Hooks, pacing, emotion and structure that make a message land.</p></div>
+    <div class="skill glow"><span>02</span><h3>Real estate</h3><p>Cinematic property edits, movement, atmosphere and detail-led pacing.</p></div>
+    <div class="skill glow"><span>03</span><h3>Talking head</h3><p>High-retention edits, clean captions, punch-ins, b-roll and rhythm.</p></div>
+    <div class="skill glow"><span>04</span><h3>Motion graphics</h3><p>Typography, keyframes, transitions and compositing that support the story.</p></div>
+    <div class="skill glow"><span>05</span><h3>Short-form</h3><p>Reels, Shorts and social cuts designed around the first three seconds.</p></div>
+    <div class="skill glow"><span>06</span><h3>AI content</h3><p>Generated visuals, creative concepts and hybrid edits for new visual possibilities.</p></div>
+  </div>
+</section>
+
+<section id="about" class="about container">
+  <div class="about-grid">
+    <div>
+      <div class="eyebrow2">03 / BEHIND THE TIMELINE</div>
+      <h2 class="section-title">A creative mind.<br>A precise <em>edit.</em></h2>
+      <div class="about-name">Abu Tahir MD Mostakim<small>THE CREATOR BEHIND TAHIREDITS</small></div>
+    </div>
+    <div class="about-copy">
+      <h3>A good edit does more than look good. It makes you <em>feel something.</em></h3>
+      <p>I'm Abu Tahir MD Mostakim, the editor behind TahirEdits. I bring storytelling, pacing, sound and motion together so every video has a clear purpose.</p>
+      <p>Premiere Pro, CapCut and After Effects are my everyday tools. I also create AI content, combining generated visuals with thoughtful editing to turn strong ideas into memorable pieces.</p>
+      <div class="stat-row"><div class="stat"><b>Editing + AI</b><small>CRAFT + IMAGINATION</small></div><div class="stat"><b>One focus</b><small>MAKE EVERY FRAME COUNT</small></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="services container">
+  <div class="section-top"><div><div class="eyebrow2">04 / SERVICES</div><h2 class="section-title">From raw to <em>remarkable.</em></h2></div><p>The right edit for your story, your audience and your platform.</p></div>
+  <div class="service-list">
+    <div class="service-row"><div class="num">01</div><h3>Short-form content</h3><p>Reels, Shorts and social edits with a clear hook, clean captions and tight pacing.</p><b>↗</b></div>
+    <div class="service-row"><div class="num">02</div><h3>Motion graphics</h3><p>Keyframes, typography, transitions and visual systems that add energy without clutter.</p><b>↗</b></div>
+    <div class="service-row"><div class="num">03</div><h3>Real estate editing</h3><p>Cinematic property showcases with atmosphere, speed ramps and detail-led storytelling.</p><b>↗</b></div>
+    <div class="service-row"><div class="num">04</div><h3>Talking head & podcasts</h3><p>Retention-first edits, sound polish, b-roll, cutdowns and platform-ready clips.</p><b>↗</b></div>
+    <div class="service-row"><div class="num">05</div><h3>AI content creation</h3><p>AI-generated visuals and creative concepts integrated into finished video work.</p><b>↗</b></div>
+  </div>
+</section>
+
+<section class="final container" id="contact">
+  <div class="eyebrow2">05 / LET'S WORK</div>
+  <h2>Have footage?<br>Let's make it <em>matter.</em></h2>
+  <p>Tell me what you are making, where it will live, and what you want people to feel.</p>
+  <a class="cta" href="mailto:mdmostakim170@gmail.com">Start a project <b>↗</b></a>
+</section>
+</main>
+
+<footer class="container"><span>TAHIREdits ✦</span><span>Video editing · Motion · AI</span><span>© 2026 Abu Tahir MD Mostakim</span></footer>
+
+<script>
+const root=document.documentElement;
+document.addEventListener('pointermove',e=>{
+  root.style.setProperty('--mx',e.clientX+'px');
+  root.style.setProperty('--my',e.clientY+'px');
+  document.querySelectorAll('a,.cta,.skill,.reel-card,.project-card,.service-row').forEach(el=>{
+    const r=el.getBoundingClientRect();
+    el.style.setProperty('--x',(((e.clientX-r.left)/Math.max(r.width,1))*100).toFixed(1)+'%');
+    el.style.setProperty('--y',(((e.clientY-r.top)/Math.max(r.height,1))*100).toFixed(1)+'%');
+  });
+});
+document.querySelectorAll('[data-tilt]').forEach(card=>{
+  card.addEventListener('pointermove',e=>{
+    const r=card.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+    card.style.transform='perspective(800px) rotateY('+(x*7)+'deg) rotateX('+(-y*7)+'deg) translateY(-7px)';
+  });
+  card.addEventListener('pointerleave',()=>card.style.transform='');
+});
+document.querySelectorAll('.pill').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.pill').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const f=btn.dataset.filter;
+    document.querySelectorAll('.project-card').forEach(card=>{
+      card.style.display=(f==='all'||card.dataset.cat===f)?'block':'none';
+    });
+  });
+});
+const menu=document.querySelector('.menu'), nav=document.querySelector('.navlinks');
+menu.addEventListener('click',()=>{const open=getComputedStyle(nav).display==='flex';nav.style.display=open?'':'flex';if(!open){nav.style.position='absolute';nav.style.top='74px';nav.style.right='18px';nav.style.flexDirection='column';nav.style.gap='17px';nav.style.background='#0f1021';nav.style.padding='18px 22px';nav.style.border='1px solid rgba(255,255,255,.14)';nav.style.borderRadius='14px';nav.style.zIndex='25'}});
+</script>
 </body>
-<footer>
-    <p>© Tahir MD.Mostakim 2023, a Programming Hero initiative.</p>
-</footer>
-
 </html>
