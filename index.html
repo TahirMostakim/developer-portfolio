@@ -50,16 +50,31 @@ header{height:92px;display:flex;align-items:center;justify-content:space-between
 .navlinks a:hover:after,.cta:hover:after,.skill:hover:after,.reel-card:hover:after,.project-card:hover:after,.service-row:hover:after{opacity:1}
 .navlinks a:hover{color:#fff;text-shadow:0 0 18px rgba(148,169,255,.65),0 0 34px rgba(155,30,80,.35)}
 .cta{border:1px solid rgba(255,255,255,.2);padding:14px 19px;border-radius:999px;font-size:13px;display:flex;align-items:center;gap:17px;transition:transform .25s,box-shadow .25s}
-.cta:hover{transform:translateY(-3px);box-shadow:0 0 35px rgba(95,126,255,.16)}
+.cta:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 0 35px rgba(95,126,255,.22),0 0 70px rgba(145,30,86,.10)}
+.hero-cta{animation:ctaFloat 3.5s ease-in-out infinite}
+@keyframes ctaFloat{50%{transform:translateY(-3px);box-shadow:0 0 30px rgba(95,126,255,.16)}}
 .cta b{font-size:18px;font-weight:400}
 .menu{display:none;background:none;border:0;color:#fff;font-size:23px}
 
-.hero{min-height:820px;padding:48px 0 72px;border-bottom:1px solid var(--line);position:relative}
+.hero{min-height:820px;padding:48px 0 72px;border-bottom:1px solid var(--line);position:relative;isolation:isolate;overflow:visible}
+.hero:before{content:"";position:absolute;width:560px;height:560px;right:-180px;top:70px;border-radius:50%;background:radial-gradient(circle,rgba(79,111,255,.20),rgba(79,111,255,.06) 35%,transparent 70%);filter:blur(18px);z-index:-1;animation:heroOrb 9s ease-in-out infinite alternate}
+.hero:after{content:"";position:absolute;width:460px;height:460px;left:-180px;bottom:-160px;border-radius:50%;background:radial-gradient(circle,rgba(166,29,87,.18),transparent 68%);filter:blur(22px);z-index:-1;animation:heroOrbB 11s ease-in-out infinite alternate}
+@keyframes heroOrb{to{transform:translate(-80px,90px) scale(1.18)}}@keyframes heroOrbB{to{transform:translate(110px,-55px) scale(1.12)}}
 .kicker{display:flex;gap:11px;align-items:center;font-size:10px;letter-spacing:2.5px;font-weight:700;color:#dce0ed}
-.kicker i{width:7px;height:7px;background:var(--blue2);border-radius:50%;box-shadow:0 0 18px rgba(125,158,255,.8)}
-.hero h1{margin:76px 0 44px;font:700 clamp(84px,14.2vw,212px)/.78 "Space Grotesk";letter-spacing:-.105em;white-space:nowrap;max-width:100%;overflow:visible}
-.gradient-text{background:linear-gradient(100deg,#fff 0 32%,#b4c6ff 46%,#5577ff 66%,#9c2358 93%);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero-dot{color:#a5245a}
+.kicker i{width:7px;height:7px;background:var(--blue2);border-radius:50%;box-shadow:0 0 18px rgba(125,158,255,.8);animation:kickerPulse 1.8s ease-in-out infinite}
+@keyframes kickerPulse{50%{transform:scale(1.7);box-shadow:0 0 28px rgba(125,158,255,1)}}
+.hero h1{position:relative;margin:82px 0 52px;font:700 clamp(72px,10.5vw,180px)/.84 "Space Grotesk";letter-spacing:-.085em;white-space:nowrap;max-width:100%;overflow:visible;display:flex;align-items:baseline;gap:0;filter:drop-shadow(0 18px 50px rgba(41,76,190,.13))}
+.hero h1:after{content:"";position:absolute;left:-12%;top:-10%;width:18%;height:120%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.26),transparent);filter:blur(10px);transform:skewX(-18deg);animation:titleSweep 4.8s ease-in-out infinite;pointer-events:none}
+.hero h1>span{display:inline-block;animation:titleIn .9s cubic-bezier(.16,1,.3,1) both}
+.hero h1>span:nth-child(1){animation-delay:.05s}
+.hero h1>span:nth-child(2){animation-delay:.16s}
+.hero h1>span:nth-child(3){animation-delay:.27s}
+.gradient-text{background:linear-gradient(100deg,#fff 5%,#d9e1ff 27%,#6f91ff 52%,#a12a63 78%,#f0c4d7 96%);background-size:260% 100%;background-position:0% 50%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gradientFlow 5s ease-in-out infinite alternate,titleIn .9s cubic-bezier(.16,1,.3,1) .16s both}
+.hero-dot{color:#c22b68;text-shadow:0 0 30px rgba(194,43,104,.55);animation:dotPulse 2.8s ease-in-out infinite}
+@keyframes titleIn{from{opacity:0;transform:translateY(45px) scale(.97);filter:blur(8px)}to{opacity:1;transform:none;filter:none}}
+@keyframes titleSweep{0%,35%{transform:translateX(-220%) skewX(-18deg);opacity:0}48%{opacity:1}68%,100%{transform:translateX(760%) skewX(-18deg);opacity:0}}
+@keyframes gradientFlow{0%{background-position:0% 50%}100%{background-position:100% 50%}}
+@keyframes dotPulse{50%{transform:scale(1.1);text-shadow:0 0 42px rgba(194,43,104,.8)}}
 .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:80px;align-items:end}
 .hero h2{font:400 clamp(39px,4.4vw,68px)/1.02 "Space Grotesk";letter-spacing:-3.4px;margin:0}
 .hero h2 em,.section-title em{font-family:"Instrument Serif",serif;font-style:italic;color:var(--blue2)}
@@ -71,9 +86,11 @@ header{height:92px;display:flex;align-items:center;justify-content:space-between
 .hero-punch{font-size:20px;font-weight:600;line-height:1.35;text-align:right}
 .scroll-line{position:absolute;right:0;bottom:19px;color:#787f96;font:10px "DM Mono";letter-spacing:1.5px}
 
-.reel-section:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 0%,rgba(94,126,255,.12),transparent 45%),radial-gradient(circle at 80% 100%,rgba(155,28,84,.10),transparent 40%)}
+.reel-section:before{content:"";position:absolute;inset:-20%;pointer-events:none;background:radial-gradient(circle at 15% 25%,rgba(94,126,255,.18),transparent 28%),radial-gradient(circle at 82% 76%,rgba(155,28,84,.16),transparent 30%);animation:reelGlow 12s ease-in-out infinite alternate}
+@keyframes reelGlow{to{transform:translate3d(-3%,2%,0) scale(1.06)}}
 .reel-section{background:rgba(5,8,24,.16);color:#fff;position:relative;overflow:hidden;padding:80px 0 90px;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:blur(2px)}
-.reel-head{width:min(var(--max),calc(100% - 9vw));margin:0 auto 30px;display:flex;justify-content:space-between;align-items:end}
+.reel-head{width:min(var(--max),calc(100% - 9vw));margin:0 auto 30px;display:flex;justify-content:space-between;align-items:end;animation:sectionReveal .9s cubic-bezier(.16,1,.3,1) both}
+@keyframes sectionReveal{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
 .reel-head .small{font:700 10px "DM Mono";letter-spacing:2px;color:#aeb8d2}
 .reel-head h2{margin:10px 0 0;font:500 clamp(44px,5vw,76px)/.96 "Space Grotesk";letter-spacing:-3.5px;max-width:100%}
 .reel-head p{max-width:340px;line-height:1.55;color:#b0b6c8;text-align:right}
@@ -143,14 +160,14 @@ footer{display:flex;justify-content:space-between;border-top:1px solid var(--lin
 .glow{transition:text-shadow .28s,color .28s,filter .28s}.glow:hover{color:#fff;text-shadow:0 0 8px rgba(255,255,255,.68),0 0 25px rgba(95,131,255,.55),0 0 45px rgba(147,23,77,.35);filter:blur(.15px)}
 @media(max-width:900px){
  header{height:78px}.navlinks,.header-cta{display:none}.menu{display:block}
- .hero{min-height:auto}.hero h1{font-size:21.5vw;margin:60px 0 55px}.hero-grid{grid-template-columns:1fr;gap:48px}.hero-side{justify-items:start}.hero-stack,.hero-punch{text-align:left}
+ .hero{min-height:auto}.hero h1{font-size:19.5vw;margin:60px 0 55px;letter-spacing:-.08em}.hero-grid{grid-template-columns:1fr;gap:48px}.hero-side{justify-items:start}.hero-stack,.hero-punch{text-align:left}
  .tool-grid{grid-template-columns:1fr 1fr}.project-grid{grid-template-columns:1fr}.project-card.wide{grid-column:auto}.skill-grid{grid-template-columns:1fr 1fr}
  .about-grid{grid-template-columns:1fr;gap:55px}.service-row{grid-template-columns:48px 1fr 30px}.service-row p{grid-column:2}.service-row b{grid-column:3;grid-row:1}
  .reel-card{width:235px;flex-basis:235px;height:430px}
 }
 @media(max-width:560px){
  .container,.reel-head,.reel-note{width:calc(100% - 36px)}
- .hero h1{font-size:22vw;letter-spacing:-.12em}.hero h2{letter-spacing:-2px}.tool-grid,.skill-grid{grid-template-columns:1fr}
+ .hero h1{font-size:19vw;letter-spacing:-.075em;gap:0}.hero h2{letter-spacing:-2px}.tool-grid,.skill-grid{grid-template-columns:1fr}
  .section-top{display:block}.section-top p{margin-top:25px}.project-card{min-height:330px}.project-card .project-copy{font-size:43px}.project-card.wide{min-height:330px}
  .reel-section{padding:60px 0 70px}.reel-head{display:block}.reel-head p{text-align:left;margin-top:20px}.marquee{gap:16px}.reel-card{width:215px;flex-basis:215px;height:390px}.reel-card .bottom strong{font-size:15px;max-width:142px}
  footer{gap:16px;flex-direction:column}
@@ -164,7 +181,7 @@ footer{display:flex;justify-content:space-between;border-top:1px solid var(--lin
 <header class="container">
   <a href="#home" class="brand glow">TahirEdits<span>✦</span></a>
   <nav class="navlinks">
-    <a href="#work" class="glow">Work</a><a href="#about" class="glow">About</a><a href="#services" class="glow">Services</a>
+    <a href="#reels" class="glow">Work</a><a href="#about" class="glow">About</a><a href="#services" class="glow">Services</a>
   </nav>
   <a href="#contact" class="cta header-cta glow">Let's talk <b>↗</b></a>
   <button class="menu" aria-label="Menu">☰</button>
@@ -179,7 +196,7 @@ footer{display:flex;justify-content:space-between;border-top:1px solid var(--lin
       <div class="meta">ABU TAHIR MD MOSTAKIM</div>
       <h2>I shape footage.<br>You tell a <em>better story.</em></h2>
       <p>Thoughtful editing, expressive motion and AI-powered visuals — built for the way people watch, remember and share.</p>
-      <a href="#work" class="cta" style="display:inline-flex;margin-top:26px;background:linear-gradient(100deg,#2b55d9,#751746);border-color:transparent">Explore my work <b>↗</b></a>
+      <a href="#reels" class="cta hero-cta" style="display:inline-flex;margin-top:26px;background:linear-gradient(100deg,#2b55d9,#751746);border-color:transparent">Explore my work <b>↗</b></a>
     </div>
     <div class="hero-side">
       <div class="hero-stack">CREATE.<br><span>FEEL.</span><br>REMEMBER.</div>
@@ -311,15 +328,24 @@ function updateScrollBackground(){
 window.addEventListener('scroll',updateScrollBackground,{passive:true});
 window.addEventListener('resize',updateScrollBackground);
 updateScrollBackground();
+const heroTitle=document.querySelector('.hero h1');
+const heroStack=document.querySelector('.hero-stack');
 document.addEventListener('pointermove',e=>{
   root.style.setProperty('--mx',e.clientX+'px');
   root.style.setProperty('--my',e.clientY+'px');
+  if(heroTitle && window.innerWidth>900){
+    const px=(e.clientX/window.innerWidth-.5), py=(e.clientY/window.innerHeight-.5);
+    heroTitle.style.transform='translate3d('+(px*7)+'px,'+(py*5)+'px,0)';
+    if(heroStack) heroStack.style.transform='translate3d('+(px*-10)+'px,'+(py*-7)+'px,0)';
+  }
   document.querySelectorAll('a,.cta,.skill,.reel-card,.project-card,.service-row').forEach(el=>{
     const r=el.getBoundingClientRect();
     el.style.setProperty('--x',(((e.clientX-r.left)/Math.max(r.width,1))*100).toFixed(1)+'%');
     el.style.setProperty('--y',(((e.clientY-r.top)/Math.max(r.height,1))*100).toFixed(1)+'%');
   });
 });
+document.addEventListener('mouseleave',()=>{if(heroTitle){heroTitle.style.transform=''}});
+
 document.querySelectorAll('[data-tilt]').forEach(card=>{
   card.addEventListener('pointermove',e=>{
     const r=card.getBoundingClientRect();
