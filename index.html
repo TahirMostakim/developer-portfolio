@@ -736,6 +736,53 @@ img,video,svg{max-width:100%}
 }
 
 </style>
+
+<style id="section-neon-upgrade">
+/* Full-viewport neon divider lights for the major page sections */
+:root{
+  --section-neon-blue:rgba(49,126,255,.98);
+  --section-neon-pink:rgba(226,25,105,.94);
+}
+header .brand-logo{width:78px;height:58px;filter:drop-shadow(0 0 8px rgba(49,126,255,.48)) drop-shadow(0 0 18px rgba(226,25,105,.24));}
+.hero,.reel-section,.toolkit,.work,.skills,.about,.services,.final{
+  position:relative;
+}
+.hero::after,.reel-section::after,.toolkit::after,.work::after,.skills::after,.about::after,.services::after,.final::after{
+  content:"";
+  position:absolute;
+  z-index:8;
+  left:calc(50% - 50vw);
+  width:100vw;
+  height:2px;
+  bottom:0;
+  pointer-events:none;
+  background:linear-gradient(90deg,
+    transparent 0%,
+    rgba(49,126,255,.08) 3%,
+    var(--section-neon-blue) 17%,
+    rgba(113,92,255,.98) 42%,
+    var(--section-neon-pink) 76%,
+    rgba(226,25,105,.18) 96%,
+    transparent 100%);
+  background-size:220% 100%;
+  animation:sectionNeonSweep 3.2s linear infinite;
+  box-shadow:0 0 7px rgba(49,126,255,.6),0 0 17px rgba(90,86,255,.38),0 0 27px rgba(226,25,105,.35);
+  opacity:.95;
+}
+header{position:relative}
+header::after{
+  content:"";position:absolute;left:calc(50% - 50vw);bottom:-1px;width:100vw;height:2px;pointer-events:none;z-index:8;
+  background:linear-gradient(90deg,transparent 0%,rgba(49,126,255,.22) 4%,var(--section-neon-blue) 22%,rgba(112,90,255,.98) 48%,var(--section-neon-pink) 80%,rgba(226,25,105,.14) 97%,transparent 100%);
+  background-size:220% 100%;animation:sectionNeonSweep 3.2s linear infinite;
+  box-shadow:0 0 7px rgba(49,126,255,.6),0 0 17px rgba(90,86,255,.38),0 0 27px rgba(226,25,105,.35);
+}
+@keyframes sectionNeonSweep{from{background-position:100% 50%}to{background-position:-120% 50%}}
+@media(max-width:900px){header .brand-logo{width:66px;height:49px}}
+@media(prefers-reduced-motion:reduce){
+  .hero::after,.reel-section::after,.toolkit::after,.work::after,.skills::after,.about::after,.services::after,header::after,.final::after{animation:none;background-position:50% 50%}
+}
+</style>
+
 </head>
 <body>
 <div class="cursor-glow"></div><div class="orb one"></div><div class="orb two"></div>
