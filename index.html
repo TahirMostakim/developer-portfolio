@@ -394,6 +394,52 @@ footer{display:flex;justify-content:space-between;border-top:1px solid var(--lin
   .hero h2{font-size:30px!important}
 }
 
+
+/* Final viewport alignment fix for iPhone: no clipped sides or accidental horizontal scroll */
+*,*::before,*::after{box-sizing:border-box}
+html,body{width:100%;max-width:100%;margin:0;overflow-x:hidden}
+body{position:relative}
+img,video,svg{max-width:100%}
+@media (max-width:560px){
+  .container{width:auto!important;max-width:none!important;margin-left:20px!important;margin-right:20px!important}
+  .hero{
+    width:100%!important;max-width:100%!important;margin:0!important;
+    padding:26px 20px 42px!important;overflow:hidden!important;
+  }
+  .hero-content-layer{width:100%;max-width:100%;min-width:0}
+  .hero .kicker{max-width:100%;white-space:normal!important;overflow-wrap:anywhere;line-height:1.6}
+  .hero-portrait{
+    width:min(51vw,220px)!important;max-width:calc(100vw - 40px)!important;
+    right:20px!important;left:auto!important;top:104px!important;
+  }
+  .hero h1{
+    width:55%!important;max-width:55%!important;
+    margin-top:66px!important;margin-bottom:34px!important;
+    font-size:clamp(27px,7.7vw,32px)!important;
+    line-height:1!important;letter-spacing:-.06em!important;
+    overflow-wrap:normal!important;word-break:normal!important;
+  }
+  .hero h1 span:first-child{display:block!important}
+  .hero h1 .gradient-text{display:inline!important}
+  .hero h1 .hero-dot{display:inline!important}
+  .hero-grid,.hero-copy,.hero-side{min-width:0;max-width:100%}
+  .hero h2{font-size:clamp(30px,8.2vw,38px)!important;letter-spacing:-1.4px!important;overflow-wrap:normal}
+  .hero-copy p{max-width:100%!important;overflow-wrap:break-word;word-break:normal}
+  .hero-cta{max-width:100%;white-space:normal}
+  .hero-stack{max-width:100%;font-size:clamp(32px,8.5vw,39px)!important;overflow-wrap:anywhere}
+  .hero-punch{max-width:100%;overflow-wrap:break-word}
+  .reel-head,.reel-note{max-width:calc(100% - 40px)!important}
+  .marquee-window{max-width:100vw;overflow:hidden}
+  footer{max-width:100%;overflow-wrap:anywhere}
+}
+@media (max-width:380px){
+  .container{margin-left:16px!important;margin-right:16px!important}
+  .hero{padding-left:16px!important;padding-right:16px!important}
+  .hero-portrait{width:min(49vw,195px)!important;right:16px!important;top:104px!important}
+  .hero h1{width:57%!important;max-width:57%!important;font-size:26px!important}
+  .hero h2{font-size:29px!important}
+}
+
 </style>
 </head>
 <body>
