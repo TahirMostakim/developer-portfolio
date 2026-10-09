@@ -295,6 +295,65 @@ footer{display:flex;justify-content:space-between;border-top:1px solid var(--lin
   .hero-portrait{opacity:.82!important;-webkit-mask-image:radial-gradient(ellipse 100% 90% at 62% 40%,#000 48%,rgba(0,0,0,.82) 66%,rgba(0,0,0,.36) 84%,transparent 100%)!important;mask-image:radial-gradient(ellipse 100% 90% at 62% 40%,#000 48%,rgba(0,0,0,.82) 66%,rgba(0,0,0,.36) 84%,transparent 100%)!important;-webkit-mask-composite:source-over!important;mask-composite:add!important}
 }
 
+
+/* Phone-first hero: give the portrait its own visual space instead of layering it over copy */
+@media (max-width:560px){
+  .hero{
+    min-height:0!important;
+    padding-top:28px!important;
+    padding-bottom:48px!important;
+    overflow:hidden!important;
+    isolation:isolate!important;
+  }
+  .hero-portrait{
+    display:block!important;
+    position:absolute!important;
+    z-index:0!important;
+    width:min(58vw,270px)!important;
+    height:auto!important;
+    max-height:none!important;
+    top:76px!important;
+    right:-2%!important;
+    left:auto!important;
+    opacity:.92!important;
+    object-fit:contain!important;
+    object-position:center top!important;
+    filter:saturate(1.03) contrast(1.04)!important;
+    -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 52%,rgba(0,0,0,.82) 68%,rgba(0,0,0,.38) 84%,transparent 100%)!important;
+    mask-image:linear-gradient(to bottom,#000 0%,#000 52%,rgba(0,0,0,.82) 68%,rgba(0,0,0,.38) 84%,transparent 100%)!important;
+    -webkit-mask-repeat:no-repeat!important;
+    mask-repeat:no-repeat!important;
+    -webkit-mask-size:100% 100%!important;
+    mask-size:100% 100%!important;
+    -webkit-mask-composite:source-over!important;
+  }
+  .hero-content-layer{position:relative!important;z-index:2!important}
+  .hero .kicker{position:relative;z-index:3;max-width:100%;font-size:8px;letter-spacing:1.1px}
+  .hero h1{
+    position:relative;z-index:2;
+    font-size:clamp(36px,10.2vw,54px)!important;
+    line-height:.98!important;
+    letter-spacing:-.065em!important;
+    margin:190px 0 32px!important;
+    padding:0!important;
+    white-space:normal!important;
+  }
+  .hero-grid{grid-template-columns:minmax(0,1fr)!important;gap:28px!important}
+  .hero h2{font-size:clamp(32px,8.8vw,43px)!important;line-height:1.08!important;letter-spacing:-1.7px!important}
+  .hero-copy p{font-size:14px!important;line-height:1.7!important;max-width:100%}
+  .hero-cta{margin-top:20px!important}
+  .hero-side{margin-top:4px;gap:10px!important}
+  .hero-stack{font-size:clamp(34px,9vw,40px)!important;line-height:.96!important}
+  .hero-punch{font-size:15px!important;line-height:1.35!important}
+  .scroll-line{position:static!important;margin-top:24px;text-align:left;font-size:8px!important}
+}
+@media (max-width:380px){
+  .hero-portrait{width:min(56vw,225px)!important;right:-3%!important;top:78px!important}
+  .hero h1{font-size:36px!important;margin-top:172px!important}
+  .hero h2{font-size:31px!important}
+  .hero .kicker{font-size:7px!important;letter-spacing:.75px!important}
+}
+
 </style>
 </head>
 <body>
