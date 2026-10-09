@@ -522,6 +522,60 @@ img,video,svg{max-width:100%}
   .hero::before{animation:none}
 }
 
+
+/* Align the animated halo with the portrait and eliminate visible rectangular image edges */
+.hero{isolation:isolate;overflow:hidden}
+.hero::before{
+  width:min(48vw,590px)!important;
+  aspect-ratio:1;
+  right:clamp(24px,8vw,110px)!important;
+  top:24px!important;
+  transform-origin:50% 50%;
+  background:
+    radial-gradient(circle at 35% 35%,rgba(45,124,255,.78),rgba(42,92,255,.3) 36%,transparent 65%),
+    radial-gradient(circle at 68% 52%,rgba(255,30,112,.62),rgba(211,35,128,.24) 40%,transparent 68%),
+    radial-gradient(circle,rgba(60,69,220,.2),transparent 72%)!important;
+  filter:blur(32px)!important;
+  opacity:.88!important;
+}
+.hero-portrait{
+  -webkit-mask-image:radial-gradient(ellipse 77% 78% at 56% 42%,#000 43%,rgba(0,0,0,.96) 54%,rgba(0,0,0,.7) 68%,rgba(0,0,0,.28) 83%,transparent 100%)!important;
+  mask-image:radial-gradient(ellipse 77% 78% at 56% 42%,#000 43%,rgba(0,0,0,.96) 54%,rgba(0,0,0,.7) 68%,rgba(0,0,0,.28) 83%,transparent 100%)!important;
+  -webkit-mask-repeat:no-repeat!important;
+  mask-repeat:no-repeat!important;
+  -webkit-mask-size:100% 100%!important;
+  mask-size:100% 100%!important;
+  -webkit-mask-composite:source-over!important;
+  mask-composite:add!important;
+  filter:saturate(1.04) contrast(1.03)!important;
+}
+@media(max-width:900px){
+  .hero::before{
+    width:min(70vw,420px)!important;
+    right:4%!important;
+    top:88px!important;
+    filter:blur(26px)!important;
+  }
+  .hero-portrait{
+    -webkit-mask-image:radial-gradient(ellipse 80% 76% at 56% 40%,#000 38%,rgba(0,0,0,.94) 52%,rgba(0,0,0,.64) 68%,rgba(0,0,0,.24) 84%,transparent 100%)!important;
+    mask-image:radial-gradient(ellipse 80% 76% at 56% 40%,#000 38%,rgba(0,0,0,.94) 52%,rgba(0,0,0,.64) 68%,rgba(0,0,0,.24) 84%,transparent 100%)!important;
+  }
+}
+@media(max-width:560px){
+  .hero::before{
+    width:min(76vw,330px)!important;
+    right:5%!important;
+    top:86px!important;
+    filter:blur(23px)!important;
+    opacity:.9!important;
+  }
+  .hero-portrait{
+    -webkit-mask-image:radial-gradient(ellipse 84% 76% at 56% 39%,#000 34%,rgba(0,0,0,.94) 48%,rgba(0,0,0,.62) 65%,rgba(0,0,0,.22) 82%,transparent 100%)!important;
+    mask-image:radial-gradient(ellipse 84% 76% at 56% 39%,#000 34%,rgba(0,0,0,.94) 48%,rgba(0,0,0,.62) 65%,rgba(0,0,0,.22) 82%,transparent 100%)!important;
+  }
+}
+@media(prefers-reduced-motion:reduce){.hero::before{animation:none!important}}
+
 </style>
 </head>
 <body>
