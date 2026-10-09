@@ -576,6 +576,33 @@ img,video,svg{max-width:100%}
 }
 @media(prefers-reduced-motion:reduce){.hero::before{animation:none!important}}
 
+
+/* Preserve the exact source portrait; use one Safari-safe feather mask only */
+.hero-portrait{
+  -webkit-mask-image:radial-gradient(ellipse 82% 84% at 56% 44%,#000 43%,rgba(0,0,0,.96) 57%,rgba(0,0,0,.68) 73%,rgba(0,0,0,.28) 87%,transparent 100%)!important;
+  mask-image:radial-gradient(ellipse 82% 84% at 56% 44%,#000 43%,rgba(0,0,0,.96) 57%,rgba(0,0,0,.68) 73%,rgba(0,0,0,.28) 87%,transparent 100%)!important;
+  -webkit-mask-repeat:no-repeat!important;
+  mask-repeat:no-repeat!important;
+  -webkit-mask-size:100% 100%!important;
+  mask-size:100% 100%!important;
+  -webkit-mask-composite:source-over!important;
+  mask-composite:unset!important;
+}
+@media(max-width:900px){
+  .hero-portrait{
+    -webkit-mask-image:radial-gradient(ellipse 86% 82% at 56% 42%,#000 42%,rgba(0,0,0,.94) 57%,rgba(0,0,0,.66) 73%,rgba(0,0,0,.25) 88%,transparent 100%)!important;
+    mask-image:radial-gradient(ellipse 86% 82% at 56% 42%,#000 42%,rgba(0,0,0,.94) 57%,rgba(0,0,0,.66) 73%,rgba(0,0,0,.25) 88%,transparent 100%)!important;
+  }
+}
+@media(max-width:560px){
+  .hero-portrait{
+    width:min(58vw,235px)!important;
+    opacity:1!important;
+    -webkit-mask-image:radial-gradient(ellipse 92% 86% at 56% 42%,#000 38%,rgba(0,0,0,.92) 54%,rgba(0,0,0,.62) 71%,rgba(0,0,0,.24) 87%,transparent 100%)!important;
+    mask-image:radial-gradient(ellipse 92% 86% at 56% 42%,#000 38%,rgba(0,0,0,.92) 54%,rgba(0,0,0,.62) 71%,rgba(0,0,0,.24) 87%,transparent 100%)!important;
+  }
+}
+
 </style>
 </head>
 <body>
