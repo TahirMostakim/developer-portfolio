@@ -822,36 +822,52 @@ header::after{
 @media(max-width:560px){.tool-grid{grid-template-columns:1fr}.toolkit{padding:64px 0 58px}.skill-visual{height:140px}.software-head{margin-bottom:28px}}
 @media(prefers-reduced-motion:reduce){.visual-ai i,.visual-sound .waveform i{animation:none!important}}
 </style>
-<style id="media-rich-portfolio">
-/* Real moving previews throughout skills and work cards */
-.skill-grid{grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch}
-.skill{min-width:0;overflow:hidden;padding:18px}
-.skill-media{height:170px;margin:-1px -1px 22px;border:1px solid rgba(255,255,255,.1);border-radius:9px;overflow:hidden;position:relative;background:#10142b}
-.skill-media:after{content:"";position:absolute;inset:25% 0 0;background:linear-gradient(180deg,transparent,rgba(8,10,27,.45));pointer-events:none}
-.skill-media img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .65s cubic-bezier(.2,.7,.2,1),filter .4s;filter:saturate(.9)}
-.skill:hover .skill-media img{transform:scale(1.06);filter:saturate(1.12)}
-.skill h3{margin-top:12px}
-.sound-media:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(110deg,rgba(9,15,42,.2),rgba(112,32,111,.25))}
-.sound-bars{position:absolute;z-index:2;left:10%;right:10%;bottom:18px;height:40px;opacity:.95;background:repeating-linear-gradient(90deg,#91aaff 0 3px,transparent 3px 9px);clip-path:polygon(0 46%,4% 34%,8% 70%,12% 14%,16% 62%,20% 22%,24% 84%,28% 36%,32% 4%,36% 72%,40% 26%,44% 54%,48% 10%,52% 80%,56% 35%,60% 61%,64% 20%,68% 91%,72% 38%,76% 12%,80% 68%,84% 29%,88% 57%,92% 17%,96% 74%,100% 45%)}
-.project-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.project-card{position:relative;min-width:0;min-height:330px;overflow:hidden;padding:22px;background:#10152d}
-.project-card.wide{grid-column:auto;min-height:330px}
-.project-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .7s cubic-bezier(.2,.7,.2,1),filter .5s;filter:saturate(.88)}
-.project-shade{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(7,9,25,.14) 0%,rgba(7,9,25,.15) 28%,rgba(7,9,25,.88) 100%),linear-gradient(110deg,rgba(26,49,127,.2),rgba(116,17,70,.2))}
-.project-card:hover .project-media{transform:scale(1.055);filter:saturate(1.08)}
-.project-card .tag{position:relative;z-index:2;display:inline-block;padding:7px 9px;border-radius:4px;background:rgba(7,10,28,.4);backdrop-filter:blur(8px);font-size:8px;letter-spacing:1.4px}
-.project-card .project-copy{left:22px;right:18px;bottom:22px;font-size:clamp(27px,2.4vw,39px);line-height:.92;letter-spacing:-1.8px;overflow-wrap:anywhere}
-.project-card .arrow{width:34px;height:34px;right:16px;bottom:16px;background:rgba(9,12,30,.24);backdrop-filter:blur(8px)}
-.project-card .mini-shape{z-index:0;opacity:.75;right:12%;top:25%;width:105px;height:105px;border-width:20px}
-.project-card.ai .mini-shape{width:130px;height:130px}
-.project-card.long .project-shade{background:linear-gradient(180deg,rgba(7,9,25,.15),rgba(7,9,25,.9))}
-.project-card.color .project-shade{background:linear-gradient(180deg,rgba(5,16,35,.1),rgba(5,16,35,.83))}
-.project-card.sound .project-shade{background:linear-gradient(180deg,rgba(7,9,25,.22),rgba(7,9,25,.9))}
-.service-row{grid-template-columns:48px minmax(210px,.85fr) minmax(0,1.3fr) 32px}
-.service-row h3{font-size:clamp(18px,1.7vw,24px)}
-@media(max-width:1000px){.project-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.project-card,.project-card.wide{min-height:300px}.skill-media{height:145px}.service-row{grid-template-columns:40px minmax(160px,.8fr) minmax(0,1.2fr) 28px}}
-@media(max-width:650px){.project-grid{grid-template-columns:1fr;gap:14px}.project-card,.project-card.wide{min-height:290px}.project-card .project-copy{font-size:clamp(34px,9vw,44px)}.skill-grid{grid-template-columns:1fr}.skill-media{height:190px}.service-row{grid-template-columns:30px minmax(0,1fr) 24px;gap:12px;padding:23px 0}.service-row h3{font-size:20px}.service-row p{grid-column:2 / 4;font-size:13px}.service-row b{grid-column:3;grid-row:1}.pills{gap:7px}.pill{padding:9px 11px;font-size:11px}}
-@media(prefers-reduced-motion:reduce){.skill-media img,.project-media{transition:none!important}}
+
+<style id="decorative-illustrations">
+/* Restore the original gradient project cards; videos remain only in the scrolling reels section. */
+.project-grid{grid-template-columns:1fr 1fr;gap:24px}
+.project-card{min-height:410px;padding:26px;position:relative;overflow:hidden}
+.project-card.wide{grid-column:1/-1;min-height:390px}
+.project-art{position:absolute;right:7%;top:15%;width:42%;height:58%;display:grid;place-items:center;opacity:.95;pointer-events:none;animation:artFloat 5s ease-in-out infinite}
+.project-art svg{width:100%;height:100%;overflow:visible;filter:drop-shadow(0 12px 25px rgba(73,95,210,.25))}
+.project-card.short .project-art{right:9%;top:12%;width:34%;height:60%;animation-delay:-1.2s}
+.project-card.pod .project-art{right:4%;top:17%;width:45%;height:54%;animation-delay:-2.1s}
+.project-card.motion .project-art{right:10%;top:13%;width:40%;height:60%;animation:artSpin 18s linear infinite}
+.project-card.ai .project-art{right:11%;top:9%;width:35%;height:62%;animation:artFloat 4.4s ease-in-out infinite}
+.project-card .project-copy{z-index:2}
+@keyframes artFloat{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-12px) rotate(2deg)}}
+@keyframes artSpin{to{transform:rotate(360deg)}}
+.skill-visual{height:150px;margin:24px -8px -8px;border:1px solid rgba(255,255,255,.12);border-radius:9px;position:relative;overflow:hidden;isolation:isolate;background:#10152d}
+.skill-visual svg{position:absolute;inset:0;width:100%;height:100%;animation:skillFloat 5s ease-in-out infinite}
+.skill-visual b{position:absolute;left:16px;bottom:14px;z-index:2;font:800 clamp(21px,2.4vw,32px)/.86 "Space Grotesk",sans-serif;letter-spacing:-1.3px;color:#fff;text-shadow:0 3px 22px rgba(0,0,0,.45)}
+.skill-visual i{display:block;position:absolute}
+.visual-story{background:radial-gradient(circle at 78% 20%,rgba(132,160,255,.25),transparent 34%),linear-gradient(125deg,#101b4c,#1c204c 60%,#39174e)}
+.visual-property{background:linear-gradient(130deg,#0d2248,#172c50 55%,#5d234e)}
+.visual-talking{background:radial-gradient(ellipse at 50% 30%,rgba(115,138,255,.32),transparent 55%),linear-gradient(120deg,#0e1530,#26153d)}
+.visual-motion{background:linear-gradient(125deg,#102b69,#25184a 58%,#5c1a50)}
+.visual-social{background:linear-gradient(120deg,#11204f,#33205b 60%,#701b4c)}
+.visual-ai{background:radial-gradient(circle at 72% 22%,#f8b1d1 0,transparent 16%),radial-gradient(circle at 72% 30%,#8c4cff 0,transparent 38%),linear-gradient(125deg,#101b4c,#39174e 65%,#0c1028)}
+.visual-ai i{width:115px;height:115px;right:18px;top:4px;border-radius:50%;background:radial-gradient(circle at 30% 24%,#fff0fb,#ad86ff 22%,#4d4cff 49%,#ee3d8e 78%,transparent 80%);filter:drop-shadow(0 0 22px #9d59ff);animation:skillOrb 4s ease-in-out infinite alternate}
+.visual-thumb{background:linear-gradient(115deg,#082a63,#10214a 48%,#9e184d)}
+.visual-thumb:before{content:"";position:absolute;width:95px;height:130px;right:24px;bottom:-25px;border-radius:48% 48% 12% 12%;background:linear-gradient(135deg,#ffb38a,#e85a5f 52%,#281d49);transform:rotate(10deg);box-shadow:0 0 32px rgba(255,69,114,.45)}
+.visual-thumb i{width:65px;height:65px;right:34px;top:8px;border-radius:50%;background:linear-gradient(130deg,#ffd1a4,#c45b60);box-shadow:0 0 0 5px rgba(255,255,255,.09)}
+.visual-thumb b{font-size:27px;color:#fff09b;text-shadow:2px 3px 0 #c51c57}
+.visual-thumb small{position:absolute;right:10px;top:12px;font:700 7px "DM Mono",monospace;letter-spacing:1px;color:#fff;z-index:2}
+.visual-grade{background:linear-gradient(120deg,#09213d,#6d294d 52%,#e07b54)}
+.visual-grade:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,24,57,.65),transparent 65%),radial-gradient(ellipse at 75% 30%,rgba(255,161,106,.55),transparent 40%)}
+.visual-grade i{width:140px;height:140px;right:4px;top:-34px;border-radius:50%;background:radial-gradient(circle at 35% 28%,#f5c3a0,#a94c55 46%,#182d55 76%);box-shadow:0 0 30px rgba(255,104,91,.28)}
+.grade-swatches{position:absolute;right:12px;bottom:13px;display:flex;gap:4px;z-index:2}
+.grade-swatches i{position:static;width:15px;height:15px;border-radius:4px;background:#254f7d}.grade-swatches i:nth-child(2){background:#508e9a}.grade-swatches i:nth-child(3){background:#e7a16f}.grade-swatches i:nth-child(4){background:#bd506b}.grade-swatches i:nth-child(5){background:#25203f}
+.visual-sound{background:radial-gradient(ellipse at 50% 40%,rgba(60,100,255,.3),transparent 55%),linear-gradient(120deg,#10172e,#24113a)}
+.visual-sound:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 16px,rgba(125,150,255,.05) 16px 17px)}
+.visual-sound .waveform{position:absolute;left:12px;right:12px;top:18px;height:70px;display:flex;align-items:center;justify-content:center;gap:4px}
+.visual-sound .waveform i{position:static;display:block;width:5px;height:var(--bar,24px);background:#91aaff;border-radius:4px;box-shadow:0 0 12px rgba(145,170,255,.5)}
+.visual-sound .waveform i:nth-child(3n){height:52px}.visual-sound .waveform i:nth-child(3n + 1){height:32px}.visual-sound .waveform i:nth-child(4n){height:62px}
+@keyframes skillFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes skillOrb{to{transform:translateY(-9px) scale(1.04)}}
+@media(max-width:900px){.project-card{min-height:330px}.project-card.wide{min-height:330px}.skill-visual{height:140px}}
+@media(max-width:650px){.project-grid{grid-template-columns:1fr;gap:14px}.project-card,.project-card.wide{min-height:290px}.project-card .project-copy{font-size:clamp(34px,9vw,44px)}.skill-grid{grid-template-columns:1fr}.skill-visual{height:190px}}
+@media(prefers-reduced-motion:reduce){.project-art,.skill-visual svg,.visual-ai i{animation:none!important}}
 </style>
 </head>
 <body>
@@ -930,45 +946,32 @@ header::after{
     <p>Different formats. The same obsession with getting every detail right.</p>
   </div>
   <div class="pills">
-    <button class="pill active" data-filter="all">All work</button>
-    <button class="pill" data-filter="real">Real estate</button>
-    <button class="pill" data-filter="short">Short form</button>
-    <button class="pill" data-filter="long">Long form</button>
-    <button class="pill" data-filter="pod">Podcasts</button>
-    <button class="pill" data-filter="motion">Motion</button>
-    <button class="pill" data-filter="ai">AI content</button>
-    <button class="pill" data-filter="color">Color grading</button>
-    <button class="pill" data-filter="sound">Sound design</button>
-    <button class="pill" data-filter="thumb">Thumbnails</button>
+    <button class="pill active" data-filter="all">All work</button><button class="pill" data-filter="real">Real estate</button><button class="pill" data-filter="short">Short form</button><button class="pill" data-filter="pod">Podcasts</button><button class="pill" data-filter="motion">Motion</button><button class="pill" data-filter="ai">AI content</button>
   </div>
   <div class="project-grid" id="projectGrid">
-    <article class="project-card real" data-cat="real"><img class="project-media" src="assets/ana-final-preview.webp" alt="Real estate video preview" loading="lazy"><div class="project-shade"></div><div class="tag">REAL ESTATE</div><div class="project-copy glow">Spaces<br>that tell<br>a story.</div><div class="arrow">↗</div></article>
-    <article class="project-card short" data-cat="short"><img class="project-media" src="assets/saint-fit-drinks-preview.webp" alt="Short-form product video preview" loading="lazy"><div class="project-shade"></div><div class="tag">SHORT FORM</div><div class="project-copy glow">Make them<br><em>look.</em></div><div class="arrow">↗</div></article>
-    <article class="project-card pod" data-cat="pod"><img class="project-media" src="assets/video-20-preview.webp" alt="Talking-head video preview" loading="lazy"><div class="project-shade"></div><div class="tag">PODCASTS & TALKING HEAD</div><div class="project-copy glow">Conversations<br>that stay.</div><div class="arrow">↗</div></article>
-    <article class="project-card motion" data-cat="motion"><img class="project-media" src="assets/ubereats-apple-style-animation-preview.webp" alt="Product motion graphics preview" loading="lazy"><div class="project-shade"></div><div class="tag">MOTION DESIGN</div><div class="project-copy glow">Ideas.<br><em>In motion.</em></div><div class="arrow">↗</div></article>
-    <article class="project-card ai" data-cat="ai"><img class="project-media" src="assets/video-10-preview.webp" alt="Cinematic AI visual preview" loading="lazy"><div class="project-shade"></div><div class="tag">AI CONTENT CREATION</div><div class="project-copy glow">Imagine it.<br><em>Create it.</em></div><div class="arrow">↗</div></article>
-    <article class="project-card long" data-cat="long"><img class="project-media" src="assets/robert-hill-video-1-preview.webp" alt="Long-form property video preview" loading="lazy"><div class="project-shade"></div><div class="tag">LONG-FORM EDITING</div><div class="project-copy glow">Built to<br><em>hold attention.</em></div><div class="arrow">↗</div></article>
-    <article class="project-card color" data-cat="color"><img class="project-media" src="assets/junior-torres-preview.webp" alt="Cinematic color-graded footage preview" loading="lazy"><div class="project-shade"></div><div class="tag">COLOR GRADING</div><div class="project-copy glow">Set the<br><em>mood.</em></div><div class="arrow">↗</div></article>
-    <article class="project-card sound" data-cat="sound"><img class="project-media" src="assets/video-12-preview.webp" alt="Video edit with sound design preview" loading="lazy"><div class="project-shade"></div><div class="tag">SOUND DESIGN</div><div class="project-copy glow">Make every<br>beat <em>matter.</em></div><div class="arrow">↗</div></article>
-    <article class="project-card thumb" data-cat="thumb"><img class="project-media" src="assets/video-25-preview.webp" alt="Thumbnail and visual packaging reference" loading="lazy"><div class="project-shade"></div><div class="tag">THUMBNAIL DESIGN</div><div class="project-copy glow">Win the<br><em>first click.</em></div><div class="arrow">↗</div></article>
+    <article class="project-card real" data-cat="real"><div class="tag">REAL ESTATE</div><div class="project-art art-house" aria-hidden="true"><svg viewBox="0 0 180 150"><path d="M20 72 90 18l70 54v62H20Z" fill="none" stroke="#d9e2ff" stroke-width="3"/><path d="M68 134V88h44v46M42 83h18V65H42ZM120 83h18V65h-18Z" fill="none" stroke="#9bb6ff" stroke-width="3"/><path d="M9 72 90 8l81 64" fill="none" stroke="#f0a4d1" stroke-width="4"/></svg></div><div class="project-copy glow">Spaces<br>that tell<br>a story.</div><div class="arrow">↗</div></article>
+    <article class="project-card short" data-cat="short"><div class="tag">SHORT FORM</div><div class="project-art art-phone" aria-hidden="true"><svg viewBox="0 0 130 180"><rect x="26" y="5" width="78" height="166" rx="15" fill="#121633" stroke="#b9c9ff" stroke-width="3"/><rect x="34" y="23" width="62" height="120" rx="5" fill="url(#screenGrad)"/><defs><linearGradient id="screenGrad" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#4b77ff"/><stop offset="1" stop-color="#9d236e"/></linearGradient></defs><circle cx="65" cy="83" r="20" fill="#fff" fill-opacity=".9"/><path d="M60 70 78 83 60 96Z" fill="#3d317b"/><path d="M52 12h26" stroke="#b9c9ff" stroke-width="3" stroke-linecap="round"/></svg></div><div class="project-copy glow">MAKE<br>THEM<br><em>LOOK.</em></div><div class="arrow">↗</div></article>
+    <article class="project-card pod" data-cat="pod"><div class="tag">PODCASTS</div><div class="project-art art-audio" aria-hidden="true"><svg viewBox="0 0 190 130"><rect x="67" y="10" width="56" height="76" rx="28" fill="#a9baff" fill-opacity=".18" stroke="#d7dfff" stroke-width="3"/><path d="M49 57v7a46 46 0 0 0 92 0v-7M95 110v12M75 122h40" fill="none" stroke="#d7dfff" stroke-width="3" stroke-linecap="round"/><path d="M8 64h18l9-20 11 40 11-52 12 65 12-45 12 24 12-43 12 49 12-24 10 10h23" fill="none" stroke="#f1a4d3" stroke-width="3" stroke-linejoin="round"/></svg></div><div class="project-copy glow">Conversations<br>that stay.</div><div class="arrow">↗</div></article>
+    <article class="project-card motion" data-cat="motion"><div class="tag">MOTION DESIGN</div><div class="project-art art-rings" aria-hidden="true"><svg viewBox="0 0 180 150"><circle cx="92" cy="75" r="47" fill="none" stroke="#7993ff" stroke-width="22"/><circle cx="110" cy="79" r="47" fill="none" stroke="#bc286f" stroke-width="11" stroke-opacity=".85"/><circle cx="92" cy="75" r="22" fill="#111738"/></svg></div><div class="project-copy glow">Ideas.<br><em>In motion.</em></div><div class="arrow">↗</div></article>
+    <article class="project-card ai wide" data-cat="ai"><div class="tag">AI CONTENT CREATION</div><div class="project-art art-orb" aria-hidden="true"><svg viewBox="0 0 180 180"><defs><radialGradient id="orbGrad" cx="28%" cy="24%"><stop stop-color="#f2e9ff"/><stop offset=".3" stop-color="#8f9cff"/><stop offset=".68" stop-color="#3e57c8"/><stop offset="1" stop-color="#85184e"/></radialGradient></defs><circle cx="90" cy="90" r="68" fill="url(#orbGrad)"/></svg></div><div class="project-copy glow">Imagine it.<br><em>Create it.</em></div><div class="arrow">↗</div></article>
   </div>
 </section>
 
 <section class="skills container">
   <div class="section-top">
     <div><div class="eyebrow2">02 / WHAT I DO</div><h2 class="section-title">Skills that <em>sell the story.</em></h2></div>
-    <p>From the first hook to the final sound cue, every element has a job to do.</p>
+    <p>Editing is more than software. It is knowing what to keep, what to cut, and what the viewer should feel next.</p>
   </div>
   <div class="skill-grid">
-    <div class="skill glow"><div class="skill-media"><img src="assets/joe-video-5-preview.webp" alt="Story-driven motion edit preview" loading="lazy"></div><span>01 / STORY</span><h3>Storytelling</h3><p>Hooks, pacing, emotion and structure that make a message land.</p></div>
-    <div class="skill glow"><div class="skill-media"><img src="assets/ana-final-preview.webp" alt="Real estate video preview" loading="lazy"></div><span>02 / PROPERTY</span><h3>Real estate</h3><p>Cinematic property edits, movement, atmosphere and detail-led pacing.</p></div>
-    <div class="skill glow"><div class="skill-media"><img src="assets/video-20-preview.webp" alt="Talking-head editing preview" loading="lazy"></div><span>03 / RETENTION</span><h3>Talking head</h3><p>Clean captions, punch-ins, purposeful b-roll and engaging rhythm.</p></div>
-    <div class="skill glow"><div class="skill-media"><img src="assets/ubereats-apple-style-animation-preview.webp" alt="Motion graphics preview" loading="lazy"></div><span>04 / ANIMATION</span><h3>Motion graphics</h3><p>Typography, keyframes, transitions and compositing that support the story.</p></div>
-    <div class="skill glow"><div class="skill-media"><img src="assets/saint-fit-drinks-preview.webp" alt="Short-form product video preview" loading="lazy"></div><span>05 / SOCIAL</span><h3>Short-form</h3><p>Reels, Shorts and social cuts designed around the first three seconds.</p></div>
-    <div class="skill glow"><div class="skill-media"><img src="assets/video-10-preview.webp" alt="Cinematic visual creation preview" loading="lazy"></div><span>06 / AI VISUALS</span><h3>AI content</h3><p>Generated visuals, creative concepts and hybrid edits for new visual possibilities.</p></div>
-    <div class="skill glow"><div class="skill-media"><img src="assets/video-25-preview.webp" alt="Visual composition reference for thumbnail design" loading="lazy"></div><span>07 / DESIGN</span><h3>Thumbnail design</h3><p>Bold hierarchy, clear focal points and expressive compositions built to earn the click.</p></div>
-    <div class="skill glow"><div class="skill-media"><img src="assets/junior-torres-preview.webp" alt="Cinematic color grading preview" loading="lazy"></div><span>08 / COLOR</span><h3>Color grading</h3><p>Contrast, skin-tone care and cinematic palettes that establish a consistent mood.</p></div>
-    <div class="skill glow"><div class="skill-media sound-media"><img src="assets/video-12-preview.webp" alt="Sound-led video editing preview" loading="lazy"><span class="sound-bars" aria-hidden="true"></span></div><span>09 / AUDIO</span><h3>Sound design</h3><p>Music, ambience, sound effects and audio polish for more immersive edits.</p></div>
+    <div class="skill glow"><span>01</span><div class="skill-visual visual-story" aria-hidden="true"><svg viewBox="0 0 240 150"><rect x="50" y="28" width="142" height="96" rx="8" fill="#172450" stroke="#8ba8ff" stroke-width="2"/><path d="M65 43h112v65H65z" fill="#3a5fc7" fill-opacity=".5"/><path d="M81 92 103 70l18 12 25-27 23 37" fill="none" stroke="#f4b2db" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="82" cy="57" r="6" fill="#fff"/></svg></div><h3>Storytelling</h3><p>Hooks, pacing, emotion and structure that make a message land.</p></div>
+    <div class="skill glow"><span>02</span><div class="skill-visual visual-property" aria-hidden="true"><svg viewBox="0 0 240 150"><path d="M44 76 120 19l76 57v55H44Z" fill="#18254d" stroke="#a8bbff" stroke-width="3"/><path d="M99 131V86h42v45M60 86h23V68H60ZM157 86h23V68h-23Z" fill="none" stroke="#f4b2db" stroke-width="3"/><circle cx="183" cy="36" r="12" fill="#7b91ff" fill-opacity=".8"/></svg></div><h3>Real estate</h3><p>Cinematic property edits, movement, atmosphere and detail-led pacing.</p></div>
+    <div class="skill glow"><span>03</span><div class="skill-visual visual-talking" aria-hidden="true"><svg viewBox="0 0 240 150"><circle cx="119" cy="50" r="24" fill="#a8bbff"/><path d="M75 128c3-30 18-48 44-48s42 18 45 48" fill="#536de0"/><path d="M22 64h22l8-16 11 35 12-52 13 70 12-36 12 14M159 66h17l9-18 10 35 11-25 10 8h13" fill="none" stroke="#f4b2db" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Talking head</h3><p>High-retention edits, clean captions, punch-ins, b-roll and rhythm.</p></div>
+    <div class="skill glow"><span>04</span><div class="skill-visual visual-motion" aria-hidden="true"><svg viewBox="0 0 240 150"><rect x="48" y="25" width="144" height="100" rx="8" fill="#15204b" stroke="#627fff" stroke-width="2"/><path d="M68 102 98 72l20 15 31-39 24 26" fill="none" stroke="#f1a4d3" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="98" cy="72" r="7" fill="#fff"/><circle cx="149" cy="48" r="7" fill="#fff"/><path d="M62 42h20M62 50h12M158 105h20" stroke="#93a9ff" stroke-width="3" stroke-linecap="round"/></svg></div><h3>Motion graphics</h3><p>Typography, keyframes, transitions and compositing that support the story.</p></div>
+    <div class="skill glow"><span>05</span><div class="skill-visual visual-social" aria-hidden="true"><svg viewBox="0 0 240 150"><rect x="87" y="8" width="66" height="134" rx="13" fill="#151b3b" stroke="#c4ceff" stroke-width="3"/><rect x="94" y="26" width="52" height="93" rx="4" fill="url(#socialGrad)"/><defs><linearGradient id="socialGrad" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#3266ec"/><stop offset="1" stop-color="#a91f68"/></linearGradient></defs><circle cx="120" cy="71" r="17" fill="#fff"/><path d="M115 60 131 71 115 82Z" fill="#4d368c"/><circle cx="120" cy="131" r="4" fill="#8c9cff"/></svg></div><h3>Short-form</h3><p>Reels, Shorts and social cuts designed around the first three seconds.</p></div>
+    <div class="skill glow"><span>06 / AI VISUALS</span><h3>AI content</h3><p>Generated visuals, creative concepts and hybrid edits for new visual possibilities.</p><div class="skill-visual visual-ai" aria-hidden="true"><i></i><b>IMAGINE<br>MORE.</b></div></div>
+    <div class="skill glow"><span>07 / DESIGN</span><h3>Thumbnail design</h3><p>Bold visual hierarchy, expressive cutouts and clear focal points built to earn the click.</p><div class="skill-visual visual-thumb" aria-hidden="true"><i></i><b>MAKE<br>THE<br>CLICK.</b><small>NEW VIDEO · 4K</small></div></div>
+    <div class="skill glow"><span>08 / COLOR</span><h3>Color grading</h3><p>Shape mood with contrast, skin-tone care and cinematic color that feels intentional.</p><div class="skill-visual visual-grade" aria-hidden="true"><i></i><b>MOOD<br>IN EVERY<br>FRAME.</b><div class="grade-swatches"><i></i><i></i><i></i><i></i><i></i></div></div></div>
+    <div class="skill glow"><span>09 / SOUND</span><h3>Sound design</h3><p>Layer music, ambience and purposeful sound effects to give every cut more impact.</p><div class="skill-visual visual-sound" aria-hidden="true"><div class="waveform"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><b>FEEL<br>THE CUT.</b></div></div>
   </div>
 </section>
 
@@ -989,18 +992,13 @@ header::after{
 </section>
 
 <section id="services" class="services container">
-  <div class="section-top"><div><div class="eyebrow2">04 / SERVICES</div><h2 class="section-title">From raw to <em>remarkable.</em></h2></div><p>Flexible editing support for creators, brands, podcasts and businesses.</p></div>
+  <div class="section-top"><div><div class="eyebrow2">04 / SERVICES</div><h2 class="section-title">From raw to <em>remarkable.</em></h2></div><p>The right edit for your story, your audience and your platform.</p></div>
   <div class="service-list">
     <div class="service-row"><div class="num">01</div><h3>Short-form content</h3><p>Reels, Shorts and social edits with a clear hook, clean captions and tight pacing.</p><b>↗</b></div>
-    <div class="service-row"><div class="num">02</div><h3>Long-form YouTube</h3><p>Structured edits, story flow, b-roll, graphics and pacing that keep viewers watching.</p><b>↗</b></div>
-    <div class="service-row"><div class="num">03</div><h3>Motion graphics</h3><p>Keyframes, typography, transitions and visual systems that add energy without clutter.</p><b>↗</b></div>
-    <div class="service-row"><div class="num">04</div><h3>Real estate editing</h3><p>Cinematic property showcases with atmosphere, speed ramps and detail-led storytelling.</p><b>↗</b></div>
-    <div class="service-row"><div class="num">05</div><h3>Talking head & podcasts</h3><p>Retention-first edits, sound polish, b-roll, cutdowns and platform-ready clips.</p><b>↗</b></div>
-    <div class="service-row"><div class="num">06</div><h3>Product ads & promos</h3><p>Product-focused visuals, benefit-led pacing and polished edits made for campaigns.</p><b>↗</b></div>
-    <div class="service-row"><div class="num">07</div><h3>Color grading</h3><p>Balanced skin tones, cinematic contrast and a consistent visual mood from shot to shot.</p><b>↗</b></div>
-    <div class="service-row"><div class="num">08</div><h3>Sound design & cleanup</h3><p>Music edits, layered effects, dialogue cleanup and sound details that make scenes feel complete.</p><b>↗</b></div>
-    <div class="service-row"><div class="num">09</div><h3>Thumbnail design</h3><p>High-contrast compositions, readable typography and a clear focal point for each video.</p><b>↗</b></div>
-    <div class="service-row"><div class="num">10</div><h3>AI content creation</h3><p>AI-generated visuals and creative concepts integrated into finished video work.</p><b>↗</b></div>
+    <div class="service-row"><div class="num">02</div><h3>Motion graphics</h3><p>Keyframes, typography, transitions and visual systems that add energy without clutter.</p><b>↗</b></div>
+    <div class="service-row"><div class="num">03</div><h3>Real estate editing</h3><p>Cinematic property showcases with atmosphere, speed ramps and detail-led storytelling.</p><b>↗</b></div>
+    <div class="service-row"><div class="num">04</div><h3>Talking head & podcasts</h3><p>Retention-first edits, sound polish, b-roll, cutdowns and platform-ready clips.</p><b>↗</b></div>
+    <div class="service-row"><div class="num">05</div><h3>AI content creation</h3><p>AI-generated visuals and creative concepts integrated into finished video work.</p><b>↗</b></div>
   </div>
 </section>
 
