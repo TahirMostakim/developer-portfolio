@@ -266,6 +266,35 @@ footer{display:flex;justify-content:space-between;border-top:1px solid var(--lin
   .skill:hover,.service-row:hover{transform:none}
 }
 
+
+/* Final mobile portrait correction: preserve photo contrast and feather its entire boundary */
+@media (max-width:560px){
+  html,body{max-width:100%;overflow-x:hidden}
+  .hero{position:relative;isolation:isolate;overflow:hidden}
+  .hero-portrait{
+    width:min(96vw,440px)!important;
+    height:auto!important;
+    max-height:none!important;
+    right:-15%!important;
+    top:22px!important;
+    object-fit:contain!important;
+    object-position:center top!important;
+    opacity:.78!important;
+    filter:saturate(1.04) contrast(1.04) drop-shadow(0 18px 34px rgba(0,0,0,.12))!important;
+    -webkit-mask-image:radial-gradient(ellipse 100% 90% at 58% 38%,#000 46%,rgba(0,0,0,.88) 61%,rgba(0,0,0,.48) 78%,rgba(0,0,0,.16) 91%,transparent 100%)!important;
+    mask-image:radial-gradient(ellipse 100% 90% at 58% 38%,#000 46%,rgba(0,0,0,.88) 61%,rgba(0,0,0,.48) 78%,rgba(0,0,0,.16) 91%,transparent 100%)!important;
+    -webkit-mask-repeat:no-repeat!important;
+    mask-repeat:no-repeat!important;
+    -webkit-mask-size:100% 100%!important;
+    mask-size:100% 100%!important;
+  }
+  .hero-content-layer{position:relative;z-index:3}
+}
+@media (min-width:561px) and (max-width:900px){
+  .hero{position:relative;isolation:isolate;overflow:hidden}
+  .hero-portrait{opacity:.82!important;-webkit-mask-image:radial-gradient(ellipse 100% 90% at 62% 40%,#000 48%,rgba(0,0,0,.82) 66%,rgba(0,0,0,.36) 84%,transparent 100%)!important;mask-image:radial-gradient(ellipse 100% 90% at 62% 40%,#000 48%,rgba(0,0,0,.82) 66%,rgba(0,0,0,.36) 84%,transparent 100%)!important;-webkit-mask-composite:source-over!important;mask-composite:add!important}
+}
+
 </style>
 </head>
 <body>
