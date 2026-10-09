@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 1433" role="img" aria-labelledby="title">
+<title>TahirEdits logo</title>
+<defs>
+  <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#3295ff"/><stop offset="1" stop-color="#0644d8"/></linearGradient>
+  <linearGradient id="pink" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e6003f"/><stop offset=".52" stop-color="#b40b4d"/><stop offset="1" stop-color="#4b0739"/></linearGradient>
+</defs>
+<path fill="url(#blue)" d="M1232 158 L360 158 L354 164 L150 472 L524 472 L526 474 L526 1276 L558 1276 L838 828 L850 812 L850 474 L852 472 L1034 472 L1046 456 Z"/>
+<path fill="url(#pink)" d="M1894 158 L1320 158 L640 1276 L1552 1276 L1744 988 L1116 988 L1114 986 L1114 884 L1116 882 L1522 882 L1696 606 L1136 606 L1134 602 L1216 472 L1700 472 L1890 168 Z"/>
+</svg>
