@@ -468,6 +468,21 @@ img,video,svg{max-width:100%}
   .hero h1{font-size:22px!important;margin-top:48px!important}
 }
 
+
+/* Keep the portrait lifted clear of the hero copy on mobile */
+@media (max-width:560px){
+  .hero-portrait{
+    top:76px!important;
+    width:min(58vw,235px)!important;
+    opacity:.96!important;
+    -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 48%,rgba(0,0,0,.84) 62%,rgba(0,0,0,.42) 76%,transparent 91%)!important;
+    mask-image:linear-gradient(to bottom,#000 0%,#000 48%,rgba(0,0,0,.84) 62%,rgba(0,0,0,.42) 76%,transparent 91%)!important;
+  }
+}
+@media (max-width:380px){
+  .hero-portrait{top:78px!important;width:56vw!important}
+}
+
 </style>
 </head>
 <body>
