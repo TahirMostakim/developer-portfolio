@@ -918,6 +918,13 @@ header::after{
 .reel-card-wide:before{background:linear-gradient(to top,rgba(8,9,15,.88),rgba(8,9,15,.03) 48%,rgba(8,9,15,.03))!important}
 @media(prefers-reduced-motion:reduce){.reel-card .poster img.poster-bg{filter:blur(12px) brightness(.48)!important}}
 </style>
+<style id="reel-drag-controls">
+.marquee-window{cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.marquee-window.is-dragging{cursor:grabbing}
+.marquee-window.is-dragging .marquee{pointer-events:none}
+.marquee-window img{-webkit-user-drag:none;user-select:none}
+@media(hover:hover){.marquee-window:focus-visible{outline:2px solid rgba(143,164,255,.85);outline-offset:5px}}
+</style>
 </head>
 <body>
 <div class="cursor-glow"></div><div class="orb one"></div><div class="orb two"></div>
@@ -1135,6 +1142,74 @@ document.querySelectorAll('.pill').forEach(btn=>{
 });
 const menu=document.querySelector('.menu'), nav=document.querySelector('.navlinks');
 menu.addEventListener('click',()=>{const open=getComputedStyle(nav).display==='flex';nav.style.display=open?'':'flex';if(!open){nav.style.position='absolute';nav.style.top='74px';nav.style.right='18px';nav.style.flexDirection='column';nav.style.gap='17px';nav.style.background='#0f1021';nav.style.padding='18px 22px';nav.style.border='1px solid rgba(255,255,255,.14)';nav.style.borderRadius='14px';nav.style.zIndex='25'}});
+
+/* Mouse drag + touch swipe controls for the continuously scrolling reel rail */
+const reelWindow=document.querySelector('.marquee-window');
+const reelTrack=document.querySelector('#reelTrack');
+if(reelWindow && reelTrack){
+  let dragging=false, startX=0, lastX=0, startTranslate=0, moved=false, animation=null;
+  const halfDistance=()=>Math.max(0,(reelTrack.scrollWidth/2));
+  const readX=()=>{
+    const tr=getComputedStyle(reelTrack).transform;
+    if(!tr||tr==='none') return 0;
+    try{return new DOMMatrixReadOnly(tr).m41}catch(e){return 0}
+  };
+  const clampX=x=>Math.max(-halfDistance(),Math.min(0,x));
+  const pauseAtCurrent=()=>{
+    animation=reelTrack.getAnimations().find(a=>a.animationName==='marquee')||reelTrack.getAnimations()[0]||null;
+    if(animation) animation.pause();
+    const x=readX();
+    reelTrack.style.animation='none';
+    reelTrack.style.transform='translate3d('+x+'px,0,0)';
+    return x;
+  };
+  reelWindow.addEventListener('pointerdown',e=>{
+    if(e.pointerType==='mouse'&&e.button!==0)return;
+    dragging=true;moved=false;startX=e.clientX;lastX=e.clientX;
+    startTranslate=pauseAtCurrent();
+    reelWindow.classList.add('is-dragging');
+    reelWindow.setPointerCapture(e.pointerId);
+  });
+  reelWindow.addEventListener('pointermove',e=>{
+    if(!dragging)return;
+    const delta=e.clientX-startX;
+    if(Math.abs(delta)>4)moved=true;
+    const x=clampX(startTranslate+delta);
+    reelTrack.style.transform='translate3d('+x+'px,0,0)';
+    lastX=e.clientX;
+  });
+  const finishDrag=()=>{
+    if(!dragging)return;
+    dragging=false;reelWindow.classList.remove('is-dragging');
+    const x=clampX(readX());
+    reelTrack.style.transform='';
+    reelTrack.style.animation='marquee 72s linear infinite';
+    const next=reelTrack.getAnimations().find(a=>a.animationName==='marquee')||reelTrack.getAnimations()[0];
+    if(next){
+      const progress=halfDistance()?((x+halfDistance())/halfDistance()):1;
+      next.currentTime=progress*72000;
+      next.play();
+    }
+    if(moved){
+      reelWindow.dataset.dragged='true';
+      requestAnimationFrame(()=>requestAnimationFrame(()=>delete reelWindow.dataset.dragged));
+    }
+  };
+  reelWindow.addEventListener('pointerup',finishDrag);
+  reelWindow.addEventListener('pointercancel',finishDrag);
+  reelWindow.addEventListener('lostpointercapture',finishDrag);
+  reelWindow.addEventListener('click',e=>{
+    if(reelWindow.dataset.dragged==='true'){e.preventDefault();e.stopPropagation()}
+  },true);
+  reelWindow.addEventListener('wheel',e=>{
+    if(Math.abs(e.deltaX)>Math.abs(e.deltaY)){
+      const x=clampX(readX()-e.deltaX);
+      reelTrack.style.animationPlayState='paused';
+      reelTrack.style.transform='translate3d('+x+'px,0,0)';
+    }
+  },{passive:true});
+}
+
 </script>
 </body>
 </html>
