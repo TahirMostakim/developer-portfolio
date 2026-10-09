@@ -783,6 +783,45 @@ header::after{
 }
 </style>
 
+<style id="skills-software-upgrade">
+/* Portfolio craft thumbnails */
+.skills .skill-grid{align-items:stretch}
+.skills .skill{overflow:hidden;position:relative;min-width:0}
+.skill-visual{height:150px;margin:24px -8px -8px;border:1px solid rgba(255,255,255,.12);border-radius:9px;position:relative;overflow:hidden;isolation:isolate;background:#10152d}
+.skill-visual b{position:absolute;left:16px;bottom:14px;z-index:2;font:800 clamp(21px,2.4vw,32px)/.86 "Space Grotesk",sans-serif;letter-spacing:-1.3px;color:#fff;text-shadow:0 3px 22px rgba(0,0,0,.45)}
+.skill-visual i{display:block;position:absolute}
+.visual-ai{background:radial-gradient(circle at 72% 22%,#f8b1d1 0,transparent 16%),radial-gradient(circle at 72% 30%,#8c4cff 0,transparent 38%),linear-gradient(125deg,#101b4c,#39174e 65%,#0c1028)}
+.visual-ai i{width:115px;height:115px;right:18px;top:4px;border-radius:50%;background:radial-gradient(circle at 30% 24%,#fff0fb,#ad86ff 22%,#4d4cff 49%,#ee3d8e 78%,transparent 80%);filter:drop-shadow(0 0 22px #9d59ff);animation:skillOrb 4s ease-in-out infinite alternate}
+.visual-thumb{background:linear-gradient(115deg,#082a63,#10214a 48%,#9e184d)}
+.visual-thumb:before{content:"";position:absolute;width:95px;height:130px;right:24px;bottom:-25px;border-radius:48% 48% 12% 12%;background:linear-gradient(135deg,#ffb38a,#e85a5f 52%,#281d49);transform:rotate(10deg);box-shadow:0 0 32px rgba(255,69,114,.45)}
+.visual-thumb i{width:65px;height:65px;right:34px;top:8px;border-radius:50%;background:linear-gradient(130deg,#ffd1a4,#c45b60);box-shadow:0 0 0 5px rgba(255,255,255,.09)}
+.visual-thumb b{font-size:27px;color:#fff09b;text-shadow:2px 3px 0 #c51c57}
+.visual-thumb small{position:absolute;right:10px;top:12px;font:700 7px "DM Mono",monospace;letter-spacing:1px;color:#fff;z-index:2}
+.visual-grade{background:linear-gradient(120deg,#09213d,#6d294d 52%,#e07b54)}
+.visual-grade:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,24,57,.65),transparent 65%),radial-gradient(ellipse at 75% 30%,rgba(255,161,106,.55),transparent 40%)}
+.visual-grade i{width:140px;height:140px;right:4px;top:-34px;border-radius:50%;background:radial-gradient(circle at 35% 28%,#f5c3a0,#a94c55 46%,#182d55 76%);box-shadow:0 0 30px rgba(255,104,91,.28)}
+.grade-swatches{position:absolute;right:12px;bottom:13px;display:flex;gap:4px;z-index:2}
+.grade-swatches i{position:static;width:15px;height:15px;border-radius:4px;background:#254f7d}.grade-swatches i:nth-child(2){background:#508e9a}.grade-swatches i:nth-child(3){background:#e7a16f}.grade-swatches i:nth-child(4){background:#bd506b}.grade-swatches i:nth-child(5){background:#25203f}
+.visual-sound{background:radial-gradient(ellipse at 50% 40%,rgba(60,100,255,.3),transparent 55%),linear-gradient(120deg,#10172e,#24113a)}
+.visual-sound:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 16px,rgba(125,150,255,.05) 16px 17px)}
+.visual-sound .waveform{position:absolute;left:12px;right:12px;top:18px;height:70px;display:flex;align-items:center;justify-content:center;gap:4px}
+.visual-sound .waveform i{position:static;display:block;width:5px;height:var(--bar,24px);border-radius:5px;background:linear-gradient(180deg,#8bb4ff,#d63b8b);box-shadow:0 0 10px rgba(104,133,255,.25);animation:wavePulse 1.05s ease-in-out infinite alternate}
+.visual-sound .waveform i:nth-child(3n){--bar:48px;animation-delay:-.4s}.visual-sound .waveform i:nth-child(3n + 1){--bar:25px;animation-delay:-.7s}.visual-sound .waveform i:nth-child(4n){--bar:60px;animation-delay:-.2s}.visual-sound .waveform i:nth-child(5n){--bar:36px;animation-delay:-.9s}
+@keyframes skillOrb{to{transform:translate(-8px,5px) scale(1.07)}}@keyframes wavePulse{to{transform:scaleY(.5);opacity:.7}}
+.toolkit{padding:100px 0 90px;border-top:1px solid var(--line)}
+.software-head{margin-bottom:36px}
+.tool-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.tool{min-width:0}
+.tool:nth-child(5) .tool-icon{background:#242a45;color:#a9c8ff}
+.tool:nth-child(6) .tool-icon{background:#38214b;color:#f1b7ff}
+.tool:nth-child(7) .tool-icon{background:#28364a;color:#b9e0ff}
+.tool:nth-child(8) .tool-icon{background:#262c4b;color:#d9dcff}
+.tool-icon{flex:0 0 45px}
+.tool b{overflow-wrap:anywhere}
+@media(max-width:900px){.tool-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.toolkit{padding:78px 0 70px}}
+@media(max-width:560px){.tool-grid{grid-template-columns:1fr}.toolkit{padding:64px 0 58px}.skill-visual{height:140px}.software-head{margin-bottom:28px}}
+@media(prefers-reduced-motion:reduce){.visual-ai i,.visual-sound .waveform i{animation:none!important}}
+</style>
 </head>
 <body>
 <div class="cursor-glow"></div><div class="orb one"></div><div class="orb two"></div>
@@ -852,14 +891,7 @@ header::after{
   </div>
 </section>
 
-<section class="toolkit container">
-  <div class="tool-grid">
-    <div class="tool"><div class="tool-icon">Pr</div><div><b>Premiere Pro</b><small>Story & precision</small></div></div>
-    <div class="tool"><div class="tool-icon">CX</div><div><b>CapCut</b><small>Social & short form</small></div></div>
-    <div class="tool"><div class="tool-icon">Ae</div><div><b>After Effects</b><small>Motion & compositing</small></div></div>
-    <div class="tool"><div class="tool-icon">✦</div><div><b>AI creation</b><small>Ideas into visuals</small></div></div>
-  </div>
-</section>
+
 
 <section id="work" class="work container">
   <div class="section-top">
@@ -889,7 +921,10 @@ header::after{
     <div class="skill glow"><span>03</span><h3>Talking head</h3><p>High-retention edits, clean captions, punch-ins, b-roll and rhythm.</p></div>
     <div class="skill glow"><span>04</span><h3>Motion graphics</h3><p>Typography, keyframes, transitions and compositing that support the story.</p></div>
     <div class="skill glow"><span>05</span><h3>Short-form</h3><p>Reels, Shorts and social cuts designed around the first three seconds.</p></div>
-    <div class="skill glow"><span>06</span><h3>AI content</h3><p>Generated visuals, creative concepts and hybrid edits for new visual possibilities.</p></div>
+    <div class="skill glow"><span>06 / AI VISUALS</span><h3>AI content</h3><p>Generated visuals, creative concepts and hybrid edits for new visual possibilities.</p><div class="skill-visual visual-ai" aria-hidden="true"><i></i><b>IMAGINE<br>MORE.</b></div></div>
+    <div class="skill glow"><span>07 / DESIGN</span><h3>Thumbnail design</h3><p>Bold visual hierarchy, expressive cutouts and clear focal points built to earn the click.</p><div class="skill-visual visual-thumb" aria-hidden="true"><i></i><b>MAKE<br>THE<br>CLICK.</b><small>NEW VIDEO · 4K</small></div></div>
+    <div class="skill glow"><span>08 / COLOR</span><h3>Color grading</h3><p>Shape mood with contrast, skin-tone care and cinematic color that feels intentional.</p><div class="skill-visual visual-grade" aria-hidden="true"><i></i><b>MOOD<br>IN EVERY<br>FRAME.</b><div class="grade-swatches"><i></i><i></i><i></i><i></i><i></i></div></div></div>
+    <div class="skill glow"><span>09 / SOUND</span><h3>Sound design</h3><p>Layer music, ambience and purposeful sound effects to give every cut more impact.</p><div class="skill-visual visual-sound" aria-hidden="true"><div class="waveform"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><b>FEEL<br>THE CUT.</b></div></div>
   </div>
 </section>
 
@@ -925,6 +960,22 @@ header::after{
   <h2>Have footage?<br>Let's make it <em>matter.</em></h2>
   <p>Tell me what you are making, where it will live, and what you want people to feel.</p>
   <a class="cta" href="mailto:mdmostakim170@gmail.com">Start a project <b>↗</b></a>
+</section>
+<section class="toolkit container" id="software">
+  <div class="section-top software-head">
+    <div><div class="eyebrow2">06 / SOFTWARE FLUENCY</div><h2 class="section-title">Tools behind <em>the craft.</em></h2></div>
+    <p>From precise editing and motion to design, sound and fast-turnaround social content.</p>
+  </div>
+  <div class="tool-grid">
+    <div class="tool"><div class="tool-icon">Pr</div><div><b>Premiere Pro</b><small>Editing & storytelling</small></div></div>
+    <div class="tool"><div class="tool-icon">Ae</div><div><b>After Effects</b><small>Motion & compositing</small></div></div>
+    <div class="tool"><div class="tool-icon">DR</div><div><b>DaVinci Resolve</b><small>Color & finishing</small></div></div>
+    <div class="tool"><div class="tool-icon">Ca</div><div><b>Canva</b><small>Design & layouts</small></div></div>
+    <div class="tool"><div class="tool-icon">Ps</div><div><b>Photoshop</b><small>Thumbnails & image work</small></div></div>
+    <div class="tool"><div class="tool-icon">Au</div><div><b>Adobe Audition</b><small>Sound cleanup & mixing</small></div></div>
+    <div class="tool"><div class="tool-icon">FCP</div><div><b>Final Cut Pro</b><small>Video editing workflow</small></div></div>
+    <div class="tool"><div class="tool-icon">CC</div><div><b>CapCut</b><small>Social & short-form edits</small></div></div>
+  </div>
 </section>
 </main>
 
