@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="TahirEdits — Abu Tahir MD Mostakim. Video editing, motion graphics, storytelling and AI content creation.">
 <title>TahirEdits — Abu Tahir MD Mostakim</title>
+<link rel="icon" type="image/svg+xml" href="assets/tahiredits-logo.svg">
+<meta name="theme-color" content="#08091b">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
@@ -37,8 +39,9 @@ a{text-decoration:none;color:inherit}
 button{font:inherit}
 .container{width:min(var(--max),calc(100% - 9vw));margin:auto}
 header{height:92px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
-.brand{font:700 24px/1 "Space Grotesk";letter-spacing:-1.4px}
-.brand span{color:var(--blue2);margin-left:5px}
+.brand{display:inline-flex;align-items:center;line-height:1;flex-shrink:0}
+.brand-logo{display:block;width:48px;height:34px;object-fit:contain;filter:drop-shadow(0 0 10px rgba(80,105,255,.16))}
+
 .navlinks{display:flex;gap:42px;font-size:14px;color:#e6e7f1}
 .navlinks a,.cta,.skill,.reel-card,.project-card,.service-row{position:relative;overflow:hidden}
 .navlinks a:after,.cta:after,.skill:after,.reel-card:after,.project-card:after,.service-row:after{
@@ -738,7 +741,7 @@ img,video,svg{max-width:100%}
 <div class="cursor-glow"></div><div class="orb one"></div><div class="orb two"></div>
 
 <header class="container">
-  <a href="#home" class="brand glow">TahirEdits<span>✦</span></a>
+  <a href="#home" class="brand glow" aria-label="TahirEdits home"><img class="brand-logo" src="assets/tahiredits-logo.svg" alt="TahirEdits logo"></a>
   <nav class="navlinks">
     <a href="#reels" class="glow">Work</a><a href="#about" class="glow">About</a><a href="#services" class="glow">Services</a>
   </nav>
