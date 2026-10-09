@@ -822,6 +822,37 @@ header::after{
 @media(max-width:560px){.tool-grid{grid-template-columns:1fr}.toolkit{padding:64px 0 58px}.skill-visual{height:140px}.software-head{margin-bottom:28px}}
 @media(prefers-reduced-motion:reduce){.visual-ai i,.visual-sound .waveform i{animation:none!important}}
 </style>
+<style id="media-rich-portfolio">
+/* Real moving previews throughout skills and work cards */
+.skill-grid{grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch}
+.skill{min-width:0;overflow:hidden;padding:18px}
+.skill-media{height:170px;margin:-1px -1px 22px;border:1px solid rgba(255,255,255,.1);border-radius:9px;overflow:hidden;position:relative;background:#10142b}
+.skill-media:after{content:"";position:absolute;inset:25% 0 0;background:linear-gradient(180deg,transparent,rgba(8,10,27,.45));pointer-events:none}
+.skill-media img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .65s cubic-bezier(.2,.7,.2,1),filter .4s;filter:saturate(.9)}
+.skill:hover .skill-media img{transform:scale(1.06);filter:saturate(1.12)}
+.skill h3{margin-top:12px}
+.sound-media:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(110deg,rgba(9,15,42,.2),rgba(112,32,111,.25))}
+.sound-bars{position:absolute;z-index:2;left:10%;right:10%;bottom:18px;height:40px;opacity:.95;background:repeating-linear-gradient(90deg,#91aaff 0 3px,transparent 3px 9px);clip-path:polygon(0 46%,4% 34%,8% 70%,12% 14%,16% 62%,20% 22%,24% 84%,28% 36%,32% 4%,36% 72%,40% 26%,44% 54%,48% 10%,52% 80%,56% 35%,60% 61%,64% 20%,68% 91%,72% 38%,76% 12%,80% 68%,84% 29%,88% 57%,92% 17%,96% 74%,100% 45%)}
+.project-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.project-card{position:relative;min-width:0;min-height:330px;overflow:hidden;padding:22px;background:#10152d}
+.project-card.wide{grid-column:auto;min-height:330px}
+.project-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .7s cubic-bezier(.2,.7,.2,1),filter .5s;filter:saturate(.88)}
+.project-shade{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(7,9,25,.14) 0%,rgba(7,9,25,.15) 28%,rgba(7,9,25,.88) 100%),linear-gradient(110deg,rgba(26,49,127,.2),rgba(116,17,70,.2))}
+.project-card:hover .project-media{transform:scale(1.055);filter:saturate(1.08)}
+.project-card .tag{position:relative;z-index:2;display:inline-block;padding:7px 9px;border-radius:4px;background:rgba(7,10,28,.4);backdrop-filter:blur(8px);font-size:8px;letter-spacing:1.4px}
+.project-card .project-copy{left:22px;right:18px;bottom:22px;font-size:clamp(27px,2.4vw,39px);line-height:.92;letter-spacing:-1.8px;overflow-wrap:anywhere}
+.project-card .arrow{width:34px;height:34px;right:16px;bottom:16px;background:rgba(9,12,30,.24);backdrop-filter:blur(8px)}
+.project-card .mini-shape{z-index:0;opacity:.75;right:12%;top:25%;width:105px;height:105px;border-width:20px}
+.project-card.ai .mini-shape{width:130px;height:130px}
+.project-card.long .project-shade{background:linear-gradient(180deg,rgba(7,9,25,.15),rgba(7,9,25,.9))}
+.project-card.color .project-shade{background:linear-gradient(180deg,rgba(5,16,35,.1),rgba(5,16,35,.83))}
+.project-card.sound .project-shade{background:linear-gradient(180deg,rgba(7,9,25,.22),rgba(7,9,25,.9))}
+.service-row{grid-template-columns:48px minmax(210px,.85fr) minmax(0,1.3fr) 32px}
+.service-row h3{font-size:clamp(18px,1.7vw,24px)}
+@media(max-width:1000px){.project-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.project-card,.project-card.wide{min-height:300px}.skill-media{height:145px}.service-row{grid-template-columns:40px minmax(160px,.8fr) minmax(0,1.2fr) 28px}}
+@media(max-width:650px){.project-grid{grid-template-columns:1fr;gap:14px}.project-card,.project-card.wide{min-height:290px}.project-card .project-copy{font-size:clamp(34px,9vw,44px)}.skill-grid{grid-template-columns:1fr}.skill-media{height:190px}.service-row{grid-template-columns:30px minmax(0,1fr) 24px;gap:12px;padding:23px 0}.service-row h3{font-size:20px}.service-row p{grid-column:2 / 4;font-size:13px}.service-row b{grid-column:3;grid-row:1}.pills{gap:7px}.pill{padding:9px 11px;font-size:11px}}
+@media(prefers-reduced-motion:reduce){.skill-media img,.project-media{transition:none!important}}
+</style>
 </head>
 <body>
 <div class="cursor-glow"></div><div class="orb one"></div><div class="orb two"></div>
@@ -899,32 +930,45 @@ header::after{
     <p>Different formats. The same obsession with getting every detail right.</p>
   </div>
   <div class="pills">
-    <button class="pill active" data-filter="all">All work</button><button class="pill" data-filter="real">Real estate</button><button class="pill" data-filter="short">Short form</button><button class="pill" data-filter="pod">Podcasts</button><button class="pill" data-filter="motion">Motion</button><button class="pill" data-filter="ai">AI content</button>
+    <button class="pill active" data-filter="all">All work</button>
+    <button class="pill" data-filter="real">Real estate</button>
+    <button class="pill" data-filter="short">Short form</button>
+    <button class="pill" data-filter="long">Long form</button>
+    <button class="pill" data-filter="pod">Podcasts</button>
+    <button class="pill" data-filter="motion">Motion</button>
+    <button class="pill" data-filter="ai">AI content</button>
+    <button class="pill" data-filter="color">Color grading</button>
+    <button class="pill" data-filter="sound">Sound design</button>
+    <button class="pill" data-filter="thumb">Thumbnails</button>
   </div>
   <div class="project-grid" id="projectGrid">
-    <article class="project-card real" data-cat="real"><div class="tag">REAL ESTATE</div><div class="project-copy glow">Spaces<br>that tell<br>a story.</div><div class="arrow">↗</div></article>
-    <article class="project-card short" data-cat="short"><div class="tag">SHORT FORM</div><div class="project-copy glow">MAKE<br>THEM<br><em>LOOK.</em></div><div class="arrow">↗</div></article>
-    <article class="project-card pod" data-cat="pod"><div class="tag">PODCASTS</div><div class="project-copy glow">Conversations<br>that stay.</div><div class="arrow">↗</div></article>
-    <article class="project-card motion" data-cat="motion"><div class="tag">MOTION DESIGN</div><div class="mini-shape"></div><div class="project-copy glow">Ideas.<br><em>In motion.</em></div><div class="arrow">↗</div></article>
-    <article class="project-card ai wide" data-cat="ai"><div class="tag">AI CONTENT CREATION</div><div class="mini-shape"></div><div class="project-copy glow">Imagine it.<br><em>Create it.</em></div><div class="arrow">↗</div></article>
+    <article class="project-card real" data-cat="real"><img class="project-media" src="assets/ana-final-preview.webp" alt="Real estate video preview" loading="lazy"><div class="project-shade"></div><div class="tag">REAL ESTATE</div><div class="project-copy glow">Spaces<br>that tell<br>a story.</div><div class="arrow">↗</div></article>
+    <article class="project-card short" data-cat="short"><img class="project-media" src="assets/saint-fit-drinks-preview.webp" alt="Short-form product video preview" loading="lazy"><div class="project-shade"></div><div class="tag">SHORT FORM</div><div class="project-copy glow">Make them<br><em>look.</em></div><div class="arrow">↗</div></article>
+    <article class="project-card pod" data-cat="pod"><img class="project-media" src="assets/video-20-preview.webp" alt="Talking-head video preview" loading="lazy"><div class="project-shade"></div><div class="tag">PODCASTS & TALKING HEAD</div><div class="project-copy glow">Conversations<br>that stay.</div><div class="arrow">↗</div></article>
+    <article class="project-card motion" data-cat="motion"><img class="project-media" src="assets/ubereats-apple-style-animation-preview.webp" alt="Product motion graphics preview" loading="lazy"><div class="project-shade"></div><div class="tag">MOTION DESIGN</div><div class="project-copy glow">Ideas.<br><em>In motion.</em></div><div class="arrow">↗</div></article>
+    <article class="project-card ai" data-cat="ai"><img class="project-media" src="assets/video-10-preview.webp" alt="Cinematic AI visual preview" loading="lazy"><div class="project-shade"></div><div class="tag">AI CONTENT CREATION</div><div class="project-copy glow">Imagine it.<br><em>Create it.</em></div><div class="arrow">↗</div></article>
+    <article class="project-card long" data-cat="long"><img class="project-media" src="assets/robert-hill-video-1-preview.webp" alt="Long-form property video preview" loading="lazy"><div class="project-shade"></div><div class="tag">LONG-FORM EDITING</div><div class="project-copy glow">Built to<br><em>hold attention.</em></div><div class="arrow">↗</div></article>
+    <article class="project-card color" data-cat="color"><img class="project-media" src="assets/junior-torres-preview.webp" alt="Cinematic color-graded footage preview" loading="lazy"><div class="project-shade"></div><div class="tag">COLOR GRADING</div><div class="project-copy glow">Set the<br><em>mood.</em></div><div class="arrow">↗</div></article>
+    <article class="project-card sound" data-cat="sound"><img class="project-media" src="assets/video-12-preview.webp" alt="Video edit with sound design preview" loading="lazy"><div class="project-shade"></div><div class="tag">SOUND DESIGN</div><div class="project-copy glow">Make every<br>beat <em>matter.</em></div><div class="arrow">↗</div></article>
+    <article class="project-card thumb" data-cat="thumb"><img class="project-media" src="assets/video-25-preview.webp" alt="Thumbnail and visual packaging reference" loading="lazy"><div class="project-shade"></div><div class="tag">THUMBNAIL DESIGN</div><div class="project-copy glow">Win the<br><em>first click.</em></div><div class="arrow">↗</div></article>
   </div>
 </section>
 
 <section class="skills container">
   <div class="section-top">
     <div><div class="eyebrow2">02 / WHAT I DO</div><h2 class="section-title">Skills that <em>sell the story.</em></h2></div>
-    <p>Editing is more than software. It is knowing what to keep, what to cut, and what the viewer should feel next.</p>
+    <p>From the first hook to the final sound cue, every element has a job to do.</p>
   </div>
   <div class="skill-grid">
-    <div class="skill glow"><span>01</span><h3>Storytelling</h3><p>Hooks, pacing, emotion and structure that make a message land.</p></div>
-    <div class="skill glow"><span>02</span><h3>Real estate</h3><p>Cinematic property edits, movement, atmosphere and detail-led pacing.</p></div>
-    <div class="skill glow"><span>03</span><h3>Talking head</h3><p>High-retention edits, clean captions, punch-ins, b-roll and rhythm.</p></div>
-    <div class="skill glow"><span>04</span><h3>Motion graphics</h3><p>Typography, keyframes, transitions and compositing that support the story.</p></div>
-    <div class="skill glow"><span>05</span><h3>Short-form</h3><p>Reels, Shorts and social cuts designed around the first three seconds.</p></div>
-    <div class="skill glow"><span>06 / AI VISUALS</span><h3>AI content</h3><p>Generated visuals, creative concepts and hybrid edits for new visual possibilities.</p><div class="skill-visual visual-ai" aria-hidden="true"><i></i><b>IMAGINE<br>MORE.</b></div></div>
-    <div class="skill glow"><span>07 / DESIGN</span><h3>Thumbnail design</h3><p>Bold visual hierarchy, expressive cutouts and clear focal points built to earn the click.</p><div class="skill-visual visual-thumb" aria-hidden="true"><i></i><b>MAKE<br>THE<br>CLICK.</b><small>NEW VIDEO · 4K</small></div></div>
-    <div class="skill glow"><span>08 / COLOR</span><h3>Color grading</h3><p>Shape mood with contrast, skin-tone care and cinematic color that feels intentional.</p><div class="skill-visual visual-grade" aria-hidden="true"><i></i><b>MOOD<br>IN EVERY<br>FRAME.</b><div class="grade-swatches"><i></i><i></i><i></i><i></i><i></i></div></div></div>
-    <div class="skill glow"><span>09 / SOUND</span><h3>Sound design</h3><p>Layer music, ambience and purposeful sound effects to give every cut more impact.</p><div class="skill-visual visual-sound" aria-hidden="true"><div class="waveform"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><b>FEEL<br>THE CUT.</b></div></div>
+    <div class="skill glow"><div class="skill-media"><img src="assets/joe-video-5-preview.webp" alt="Story-driven motion edit preview" loading="lazy"></div><span>01 / STORY</span><h3>Storytelling</h3><p>Hooks, pacing, emotion and structure that make a message land.</p></div>
+    <div class="skill glow"><div class="skill-media"><img src="assets/ana-final-preview.webp" alt="Real estate video preview" loading="lazy"></div><span>02 / PROPERTY</span><h3>Real estate</h3><p>Cinematic property edits, movement, atmosphere and detail-led pacing.</p></div>
+    <div class="skill glow"><div class="skill-media"><img src="assets/video-20-preview.webp" alt="Talking-head editing preview" loading="lazy"></div><span>03 / RETENTION</span><h3>Talking head</h3><p>Clean captions, punch-ins, purposeful b-roll and engaging rhythm.</p></div>
+    <div class="skill glow"><div class="skill-media"><img src="assets/ubereats-apple-style-animation-preview.webp" alt="Motion graphics preview" loading="lazy"></div><span>04 / ANIMATION</span><h3>Motion graphics</h3><p>Typography, keyframes, transitions and compositing that support the story.</p></div>
+    <div class="skill glow"><div class="skill-media"><img src="assets/saint-fit-drinks-preview.webp" alt="Short-form product video preview" loading="lazy"></div><span>05 / SOCIAL</span><h3>Short-form</h3><p>Reels, Shorts and social cuts designed around the first three seconds.</p></div>
+    <div class="skill glow"><div class="skill-media"><img src="assets/video-10-preview.webp" alt="Cinematic visual creation preview" loading="lazy"></div><span>06 / AI VISUALS</span><h3>AI content</h3><p>Generated visuals, creative concepts and hybrid edits for new visual possibilities.</p></div>
+    <div class="skill glow"><div class="skill-media"><img src="assets/video-25-preview.webp" alt="Visual composition reference for thumbnail design" loading="lazy"></div><span>07 / DESIGN</span><h3>Thumbnail design</h3><p>Bold hierarchy, clear focal points and expressive compositions built to earn the click.</p></div>
+    <div class="skill glow"><div class="skill-media"><img src="assets/junior-torres-preview.webp" alt="Cinematic color grading preview" loading="lazy"></div><span>08 / COLOR</span><h3>Color grading</h3><p>Contrast, skin-tone care and cinematic palettes that establish a consistent mood.</p></div>
+    <div class="skill glow"><div class="skill-media sound-media"><img src="assets/video-12-preview.webp" alt="Sound-led video editing preview" loading="lazy"><span class="sound-bars" aria-hidden="true"></span></div><span>09 / AUDIO</span><h3>Sound design</h3><p>Music, ambience, sound effects and audio polish for more immersive edits.</p></div>
   </div>
 </section>
 
@@ -945,13 +989,18 @@ header::after{
 </section>
 
 <section id="services" class="services container">
-  <div class="section-top"><div><div class="eyebrow2">04 / SERVICES</div><h2 class="section-title">From raw to <em>remarkable.</em></h2></div><p>The right edit for your story, your audience and your platform.</p></div>
+  <div class="section-top"><div><div class="eyebrow2">04 / SERVICES</div><h2 class="section-title">From raw to <em>remarkable.</em></h2></div><p>Flexible editing support for creators, brands, podcasts and businesses.</p></div>
   <div class="service-list">
     <div class="service-row"><div class="num">01</div><h3>Short-form content</h3><p>Reels, Shorts and social edits with a clear hook, clean captions and tight pacing.</p><b>↗</b></div>
-    <div class="service-row"><div class="num">02</div><h3>Motion graphics</h3><p>Keyframes, typography, transitions and visual systems that add energy without clutter.</p><b>↗</b></div>
-    <div class="service-row"><div class="num">03</div><h3>Real estate editing</h3><p>Cinematic property showcases with atmosphere, speed ramps and detail-led storytelling.</p><b>↗</b></div>
-    <div class="service-row"><div class="num">04</div><h3>Talking head & podcasts</h3><p>Retention-first edits, sound polish, b-roll, cutdowns and platform-ready clips.</p><b>↗</b></div>
-    <div class="service-row"><div class="num">05</div><h3>AI content creation</h3><p>AI-generated visuals and creative concepts integrated into finished video work.</p><b>↗</b></div>
+    <div class="service-row"><div class="num">02</div><h3>Long-form YouTube</h3><p>Structured edits, story flow, b-roll, graphics and pacing that keep viewers watching.</p><b>↗</b></div>
+    <div class="service-row"><div class="num">03</div><h3>Motion graphics</h3><p>Keyframes, typography, transitions and visual systems that add energy without clutter.</p><b>↗</b></div>
+    <div class="service-row"><div class="num">04</div><h3>Real estate editing</h3><p>Cinematic property showcases with atmosphere, speed ramps and detail-led storytelling.</p><b>↗</b></div>
+    <div class="service-row"><div class="num">05</div><h3>Talking head & podcasts</h3><p>Retention-first edits, sound polish, b-roll, cutdowns and platform-ready clips.</p><b>↗</b></div>
+    <div class="service-row"><div class="num">06</div><h3>Product ads & promos</h3><p>Product-focused visuals, benefit-led pacing and polished edits made for campaigns.</p><b>↗</b></div>
+    <div class="service-row"><div class="num">07</div><h3>Color grading</h3><p>Balanced skin tones, cinematic contrast and a consistent visual mood from shot to shot.</p><b>↗</b></div>
+    <div class="service-row"><div class="num">08</div><h3>Sound design & cleanup</h3><p>Music edits, layered effects, dialogue cleanup and sound details that make scenes feel complete.</p><b>↗</b></div>
+    <div class="service-row"><div class="num">09</div><h3>Thumbnail design</h3><p>High-contrast compositions, readable typography and a clear focal point for each video.</p><b>↗</b></div>
+    <div class="service-row"><div class="num">10</div><h3>AI content creation</h3><p>AI-generated visuals and creative concepts integrated into finished video work.</p><b>↗</b></div>
   </div>
 </section>
 
