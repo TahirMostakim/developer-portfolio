@@ -483,6 +483,45 @@ img,video,svg{max-width:100%}
   .hero-portrait{top:78px!important;width:56vw!important}
 }
 
+
+/* Animated cyan-to-magenta circular light behind the portrait */
+.hero{isolation:isolate}
+.hero::before{
+  content:"";
+  position:absolute;
+  z-index:0;
+  pointer-events:none;
+  width:min(54vw,660px);
+  aspect-ratio:1;
+  right:2%;
+  top:18px;
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 34% 36%,rgba(61,128,255,.82) 0%,rgba(47,91,255,.42) 24%,transparent 55%),
+    radial-gradient(circle at 72% 48%,rgba(255,35,112,.62) 0%,rgba(202,29,113,.34) 32%,transparent 63%),
+    radial-gradient(circle,rgba(74,64,255,.18) 0%,rgba(37,63,170,.08) 48%,transparent 70%);
+  filter:blur(26px);
+  opacity:.8;
+  transform-origin:center;
+  animation:portraitHaloDrift 8s ease-in-out infinite alternate;
+}
+@keyframes portraitHaloDrift{
+  0%{transform:translate3d(0,0,0) scale(.94);opacity:.62}
+  50%{transform:translate3d(-12px,8px,0) scale(1.04);opacity:.88}
+  100%{transform:translate3d(8px,-8px,0) scale(.98);opacity:.72}
+}
+.hero-portrait{z-index:1!important;position:absolute}
+.hero-content-layer{position:relative;z-index:3}
+@media(max-width:900px){
+  .hero::before{width:min(74vw,440px);right:-2%;top:70px;filter:blur(22px);opacity:.72}
+}
+@media(max-width:560px){
+  .hero::before{width:min(76vw,340px);right:0;top:72px;filter:blur(20px);opacity:.76}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero::before{animation:none}
+}
+
 </style>
 </head>
 <body>
