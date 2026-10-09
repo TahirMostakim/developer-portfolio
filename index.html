@@ -668,6 +668,70 @@ img,video,svg{max-width:100%}
   .hero::before{animation:none!important}
 }
 
+
+/* Final portrait edge fix: intersect a soft all-edge mask with a separate bottom fade */
+.hero-portrait{
+  -webkit-mask-image:
+    radial-gradient(ellipse 84% 78% at 56% 40%,
+      #000 34%,
+      rgba(0,0,0,.98) 47%,
+      rgba(0,0,0,.78) 62%,
+      rgba(0,0,0,.38) 78%,
+      transparent 100%),
+    linear-gradient(to bottom,
+      #000 0%,
+      #000 48%,
+      rgba(0,0,0,.92) 59%,
+      rgba(0,0,0,.62) 71%,
+      rgba(0,0,0,.28) 84%,
+      transparent 100%)!important;
+  mask-image:
+    radial-gradient(ellipse 84% 78% at 56% 40%,
+      #000 34%,
+      rgba(0,0,0,.98) 47%,
+      rgba(0,0,0,.78) 62%,
+      rgba(0,0,0,.38) 78%,
+      transparent 100%),
+    linear-gradient(to bottom,
+      #000 0%,
+      #000 48%,
+      rgba(0,0,0,.92) 59%,
+      rgba(0,0,0,.62) 71%,
+      rgba(0,0,0,.28) 84%,
+      transparent 100%)!important;
+  -webkit-mask-repeat:no-repeat!important;
+  mask-repeat:no-repeat!important;
+  -webkit-mask-size:100% 100%!important;
+  mask-size:100% 100%!important;
+  -webkit-mask-composite:source-in!important;
+  mask-composite:intersect!important;
+  opacity:1!important;
+}
+@media(max-width:900px){
+  .hero-portrait{
+    -webkit-mask-image:
+      radial-gradient(ellipse 88% 82% at 56% 40%,
+        #000 31%,rgba(0,0,0,.96) 46%,rgba(0,0,0,.7) 64%,rgba(0,0,0,.3) 82%,transparent 100%),
+      linear-gradient(to bottom,#000 0%,#000 46%,rgba(0,0,0,.9) 58%,rgba(0,0,0,.58) 72%,rgba(0,0,0,.22) 86%,transparent 100%)!important;
+    mask-image:
+      radial-gradient(ellipse 88% 82% at 56% 40%,
+        #000 31%,rgba(0,0,0,.96) 46%,rgba(0,0,0,.7) 64%,rgba(0,0,0,.3) 82%,transparent 100%),
+      linear-gradient(to bottom,#000 0%,#000 46%,rgba(0,0,0,.9) 58%,rgba(0,0,0,.58) 72%,rgba(0,0,0,.22) 86%,transparent 100%)!important;
+  }
+}
+@media(max-width:560px){
+  .hero-portrait{
+    -webkit-mask-image:
+      radial-gradient(ellipse 94% 86% at 56% 39%,
+        #000 28%,rgba(0,0,0,.95) 43%,rgba(0,0,0,.68) 63%,rgba(0,0,0,.28) 82%,transparent 100%),
+      linear-gradient(to bottom,#000 0%,#000 44%,rgba(0,0,0,.88) 57%,rgba(0,0,0,.54) 72%,rgba(0,0,0,.2) 86%,transparent 100%)!important;
+    mask-image:
+      radial-gradient(ellipse 94% 86% at 56% 39%,
+        #000 28%,rgba(0,0,0,.95) 43%,rgba(0,0,0,.68) 63%,rgba(0,0,0,.28) 82%,transparent 100%),
+      linear-gradient(to bottom,#000 0%,#000 44%,rgba(0,0,0,.88) 57%,rgba(0,0,0,.54) 72%,rgba(0,0,0,.2) 86%,transparent 100%)!important;
+  }
+}
+
 </style>
 </head>
 <body>
