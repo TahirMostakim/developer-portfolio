@@ -440,6 +440,34 @@ img,video,svg{max-width:100%}
   .hero h2{font-size:29px!important}
 }
 
+
+/* Compact phone hero: single-line brand beside a larger portrait */
+@media (max-width:560px){
+  .hero{padding-top:24px!important;padding-bottom:38px!important}
+  .hero .kicker{margin-bottom:0!important}
+  .hero-portrait{
+    width:min(58vw,235px)!important;
+    max-width:calc(100vw - 36px)!important;
+    right:16px!important;top:106px!important;
+    opacity:.96!important;
+  }
+  .hero h1{
+    width:auto!important;max-width:none!important;
+    display:block!important;
+    margin:54px 0 34px!important;
+    font-size:clamp(22px,6.4vw,27px)!important;
+    line-height:1!important;letter-spacing:-.055em!important;
+    white-space:nowrap!important;overflow-wrap:normal!important;
+  }
+  .hero h1 span:first-child,.hero h1 .gradient-text,.hero h1 .hero-dot{
+    display:inline!important;white-space:nowrap!important
+  }
+}
+@media (max-width:380px){
+  .hero-portrait{width:56vw!important;right:14px!important;top:106px!important}
+  .hero h1{font-size:22px!important;margin-top:48px!important}
+}
+
 </style>
 </head>
 <body>
